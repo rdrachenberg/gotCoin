@@ -33,12 +33,6 @@ $('#buttonsend').on("click", function(event){
     console.log(loginData.yourMessage)
   })
 
-
-  
-
-
-
-
 // npm install crypto
 var crypto = require('crypto');
 // npm install request
