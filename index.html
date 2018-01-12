@@ -12,12 +12,16 @@
 	<!-- Google Fonts API -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 	<!-- jQuery Link -->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Link to CSS File -->
 	<link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
 </head>
 <body>
-	<!-- Navbar Section -->
+	<!-- Navbar Section with md-->
 	<nav class="navbar navbar-static-top z-depth-2">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,17 +37,177 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAboutUsModal">About Us</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Resources</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myLoginModal">Login/SignUp</button>
+        </li>
       </ul>
+
     </div><!-- end of collapse -->
   </div><!-- end of container -->
 </nav> <!-- end of Navbar section -->
 
+<!-- About Us Modal -->
+<div id="myAboutUsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">alpha Coders - Developers</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row">
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/tsanders1114/tsanders1114-2-.github.io" target="_blank"><img src="assets/images/timImage.jpg" class = "thumbnail"></a>
+            <p>Tim Sanders</p>
+          </div>
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/rdrachenberg" target="_blank"><img src="assets/images/ryanImage.jpg" class = "thumbnail"></a>
+            <p>Ryan Drachenberg</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/BradleyLawson" target="_blank"><img src="assets/images/bradImage.jpg" class = "thumbnail"></a>
+            <p>Brad Lawson</p>
+          </div>
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/jkue3000/jkue3000.github.io" target="_blank"><img src="assets/images/jordanImage.jpg" class = "thumbnail"></a>
+            <p>Jordan Kue</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resources ModalModal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Resources</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row">
+          <div class = "col-sm-6">
+            <a href="https://www.forbes.com/sites/investor/2011/07/11/the-best-ways-to-learn-about-investing/#1eae82593492" target="_blank"><p>Forbes</p></a>
+            <a href="http://www.businessinsider.com/resources-to-learn-about-investing-2015-1" target="_blank"><p>Business Insider</p></a>
+            <a href="https://thecollegeinvestor.com/15601/the-best-investing-blogs/" target="_blank"><p>College Investor</p></a>
+            <a href="https://www.investopedia.com/" target="_blank"><p>Investopedia</p></a>
+           
+          </div>
+          <div class = "col-sm-6">
+            <a href="https://www.wsj.com/" target="_blank"><p>Wall Street Journal</p></a>
+            <a href="https://www.nyse.com/index" target="_blank"><p>New York Stock Exchange</p></a>
+            <a href="https://www.coinbase.com/" target="_blank"><p>Coinbase</p></a>
+            <a href="https://www.investors.com/" target="_blank"><p>Investor's Business Daily</p></a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login ModalModal -->
+<div id="myLoginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+    <!-- Form contact -->
+<form>
+
+    <p class="h5 text-center mb-4">Write to us</p>
+
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="form3" class="form-control">
+        <label for="form3">Your name</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" id="form2" class="form-control">
+        <label for="form2">Your email</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-tag prefix grey-text"></i>
+        <input type="text" id="form32" class="form-control">
+        <label for="form34">Subject</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
+        <label for="form8">Your message</label>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+    </div>
+
+</form>
+<!-- Form contact -->
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- TradingView Widget BEGIN -->
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+  "symbols": [
+    {
+      "proName": "INDEX:SPX",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "INDEX:IUXX",
+      "title": "Nasdaq 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "NYMEX:CL1!",
+      "title": "Crude Oil"
+    },
+    {
+      "proName": "FX_IDC:XAUUSD",
+      "title": "Gold"
+    }
+  ],
+  "locale": "en"
+}</script>
+<!-- TradingView Widget END -->
+</div>
+
 <!-- Heading -->
 <div class = "container">
-	<h1>Cryptocurrency</h1>
+	<h1><a href="http://nakamotoinstitute.org/bitcoin/" target="_blank">Cryptocurrency</a></h1>
 </div>
 
 	<!-- BitCoin Section -->
