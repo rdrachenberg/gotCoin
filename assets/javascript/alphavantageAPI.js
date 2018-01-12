@@ -51,7 +51,11 @@ $(".stockSearch").on('click', function(){
 		
 
 		for (i = 0; i < presetStockArray.length; i++){
-			
+			var newDiv = $('<div>');
+			newDiv.addClass('stockInfo' + i);
+			$('.stockInfo' + i).append(stockSymbol);
+
+			$('')
 		}
 
 
