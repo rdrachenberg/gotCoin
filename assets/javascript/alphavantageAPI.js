@@ -55,9 +55,9 @@ $(".stockSearch").on('click', function(){
 			// displaying stock Info dynamivally to the 
 			var newDiv = $('<div>');
 			newDiv.addClass('stockInfo' + i);
-			$('.stockInfo' + i).append(stockSymbol);
+			$('.stockInfo' + i).text('<h2>' + stockSymbol + '</h2');
 
-			$('')
+			$('.stockCards').append(newDiv);
 		}
 
 
