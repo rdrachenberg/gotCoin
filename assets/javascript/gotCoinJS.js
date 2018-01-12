@@ -9,6 +9,30 @@
   };
   firebase.initializeApp(config);
 
+var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+var apiKey = "MWAieJmDyYfwCYYC";
+
+var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
+
+
+
+    var apiKey ="MWAieJmDyYfwCYYC";
+    var appendApiKeyHeader = function( xhr ) {
+      xhr.setRequestHeader('Api-Key', apiKey)
+    };
+
+
+    $.ajax({
+        url: queryURL,
+        beforeSend: appendApiKeyHeader,
+        method: "GET"
+    }).done(function(response) {
+        $("#bitcoin").html("Bitcoin:  " + response.data["0"].amount);
+        $("#bitcoinCash").html("Bitcoin Cash:  " + response.data["1"].amount);
+        $("#ethereum").html("Ethereum:  " + response.data["2"].amount);
+        $("#liteCoin").html("LiteCoin:  " + response.data["3"].amount);
+        console.log(response);
+    });
 
 // npm install crypto
 var crypto = require('crypto');
