@@ -47,10 +47,12 @@ $(".stockSearch").on('click', function(){
 		var stockInformation = date;
 		console.log(stockInformation);
 
-		// making newDiv dynamically to show the stockSymbolto the html card box
 		
-
+		// for loop to add stockArray to box cards
+		// after search then remove #5 of array and add #0 place of array with user Stock search val.  ONLY IF USER INPUT IS VALID
 		for (i = 0; i < presetStockArray.length; i++){
+			
+			// displaying stock Info dynamivally to the 
 			var newDiv = $('<div>');
 			newDiv.addClass('stockInfo' + i);
 			$('.stockInfo' + i).append(stockSymbol);
