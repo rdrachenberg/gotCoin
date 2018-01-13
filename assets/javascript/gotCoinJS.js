@@ -9,7 +9,7 @@
   };
   firebase.initializeApp(config);
 
-var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+var queryURL = "https://api.coinbase.com/v2/prices/USD/spot";
 var apiKey = "MWAieJmDyYfwCYYC";
 
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
@@ -22,7 +22,7 @@ var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
     };
 
 
-    $.ajax({
+   $.ajax({
         url: queryURL,
         beforeSend: appendApiKeyHeader,
         method: "GET"
@@ -56,6 +56,20 @@ $('#buttonsend').on("click", function(event){
     console.log(loginData.subject)
     console.log(loginData.yourMessage)
   })
+//Code for Go function under search for stock
+$('#goButton').on("click", function(event){
+  event.preventDefault(event)
+  var queryURL ="https://api.coinbase.com/v2/prices/USD/spot";
+  var searchQuery = $('#userInput').val().trim();
+  
+
+
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+      console.log(response);
+    });
 
 
   
@@ -108,8 +122,7 @@ request(options,function(err, response){
 });
 
 
-<<<<<<< HEAD
-=======
+
 
 // JORDAN
 // create an array that holds stocks to display in the six stock box cards automatically.
@@ -179,5 +192,3 @@ $(".stockSearch").on('click', function(){
     });
     
 });
-
->>>>>>> 7be9e690ee7b29af0e43e13971a5176418c234e2
