@@ -1,3 +1,5 @@
+<<<<<<< HEAD:assets/testing/testing.js
+=======
 // Initialize Firebase
  var config = {
     apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
@@ -33,6 +35,7 @@ var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
         $("#liteCoin").html("LiteCoin:  " + response.data["3"].amount);
         console.log(response);
     });
+>>>>>>> master:assets/javascript/gotCoinJS.js
 
 var database = firebase.database();
 
@@ -120,6 +123,7 @@ request(options,function(err, response){
     if (err) console.log(err);
     console.log(response.body);
 });
+<<<<<<< HEAD:assets/javascript/gotCoinJS.js
 
 
 
@@ -192,3 +196,5 @@ $(".stockSearch").on('click', function(){
     });
     
 });
+=======
+>>>>>>> edaadc1806a5c46f0f0ce139954e7e9d39e4d5ff:assets/testing/testing.js
