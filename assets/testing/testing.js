@@ -1,3 +1,5 @@
+<<<<<<< HEAD:assets/testing/testing.js
+=======
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
@@ -33,6 +35,7 @@ var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
         $("#liteCoin").html("LiteCoin:  " + response.data["3"].amount);
         console.log(response);
     });
+>>>>>>> master:assets/javascript/gotCoinJS.js
 
 // npm install crypto
 var crypto = require('crypto');
@@ -77,4 +80,3 @@ request(options,function(err, response){
     if (err) console.log(err);
     console.log(response.body);
 });
-
