@@ -1,3 +1,41 @@
+<<<<<<< HEAD:assets/testing/testing.js
+=======
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
+    authDomain: "gotcoin-db44a.firebaseapp.com",
+    databaseURL: "https://gotcoin-db44a.firebaseio.com",
+    projectId: "gotcoin-db44a",
+    storageBucket: "",
+    messagingSenderId: "492118808139"
+  };
+  firebase.initializeApp(config);
+
+var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+var apiKey = "MWAieJmDyYfwCYYC";
+
+var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
+
+
+
+    var apiKey ="MWAieJmDyYfwCYYC";
+    var appendApiKeyHeader = function( xhr ) {
+      xhr.setRequestHeader('Api-Key', apiKey)
+    };
+
+
+    $.ajax({
+        url: queryURL,
+        beforeSend: appendApiKeyHeader,
+        method: "GET"
+    }).done(function(response) {
+        $("#bitcoin").html("Bitcoin:  " + response.data["0"].amount);
+        $("#bitcoinCash").html("Bitcoin Cash:  " + response.data["1"].amount);
+        $("#ethereum").html("Ethereum:  " + response.data["2"].amount);
+        $("#liteCoin").html("LiteCoin:  " + response.data["3"].amount);
+        console.log(response);
+    });
+>>>>>>> master:assets/javascript/gotCoinJS.js
 
 // npm install crypto
 var crypto = require('crypto');
