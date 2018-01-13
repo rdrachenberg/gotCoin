@@ -7,22 +7,24 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- MD Bootstrap -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	
 	<!-- Google Fonts API -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 	<!-- jQuery Link -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- Moment JS cdn -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
+  <!-- chartJS cdn -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
+  
   <!-- Link to CSS File -->
 	<link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
 </head>
@@ -224,18 +226,14 @@
 		 <div class="col-sm-5 cryptoCards z-depth-2">
     <div class="card">
       <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Bitcoin</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <div id='myChart'><a class="zc-ref" href="https://www.zingchart.com/">Charts by ZingChart</a></div>
       </div>
     </div>
   </div>
   <div class="col-sm-5 cryptoCards z-depth-2">
     <div class="card">
       <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Bitcoin Cash</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <div id='myChart'><a class="zc-ref" href="https://www.zingchart.com/">Charts by ZingChart</a></div>
       </div>
     </div>
   </div>
@@ -245,8 +243,7 @@
     <div class="card">
       <div class="card-body">
         <a href="#"><img src=""></a>
-        <h4 class="card-title">Ethereum</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <canvas id="myChart" width="400" height="400"></canvas>
       </div>
     </div>
   </div>
@@ -293,9 +290,7 @@
 		 <div class="col-sm-3 stockCards z-depth-2">
     <div class="card">
       <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 1</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <canvas id="myChart" width="400" height="400"></canvas>
       </div>
     </div>
   </div>
@@ -355,8 +350,9 @@
   </div>
 </footer>
 
+<!-- chartJS cdn -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script type="text/javascript" src="assets/javascript/gotCoinJS.js"></script>
-<script type="text/javascript" src="assets/javascript/alphavantageAPI.js"></script>
+<!-- <script type="text/javascript" src="assets/javascript/alphavantageAPI.js"></script> -->
 </body>
 </html>

@@ -15,7 +15,7 @@ a, .navbar-brand{
 	background: #c0dfd9;
 	border-radius: 1em;
 	margin: 4.1%;
-	padding: 5%;
+	padding: 1%;
 }
 
 .stockCards{
@@ -82,4 +82,7 @@ img{
 }
 h4{
 	font-weight: bold;
+}
+.zc-ref {
+  display: none;
 }
