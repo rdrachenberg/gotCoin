@@ -34,4 +34,24 @@ var addApiKeyHeader = function( xhr ) {
     });
 // End CoinBase API Call
 
+//Code linked to firebase
+$('#buttonsend').on("click", function(event){
+  event.preventDefault(event)
 
+    var yourName = $('#form3').val().trim();
+    var yourEmail = $('#form2').val().trim();
+    var subject = $('#form32').val().trim();
+    var yourMessage = $('#form8').val().trim();
+    
+    var loginData={
+      yourName: yourName,
+      yourEmail: yourEmail,
+      subject: subject,
+      yourMessage: yourMessage
+    }
+    database.ref().push(loginData)
+    console.log(loginData.yourName)
+    console.log(loginData.yourEmail)
+    console.log(loginData.subject)
+    console.log(loginData.yourMessage)
+  })

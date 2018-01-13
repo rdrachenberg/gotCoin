@@ -8,20 +8,18 @@
 	<!-- MD Bootstrap -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
 	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
 	<!-- Google Fonts API -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 	<!-- jQuery Link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- moment.js Time script -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- Link to CSS File -->
-	<link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/gotCoinStyle.css">
 </head>
 <body>
-	<!-- Navbar Section with md-->
+	<!-- Navbar Section -->
 	<nav class="navbar navbar-static-top z-depth-2">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,17 +35,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAboutUsModal">About Us</button>
-        </li>
-        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Resources</button>
-        </li>
-        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myLoginModal">Login/SignUp</button>
-        </li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
       </ul>
-
     </div><!-- end of collapse -->
   </div><!-- end of container -->
 </nav> <!-- end of Navbar section -->
+
 
 <!-- About Us Modal -->
 <div id="myAboutUsModal" class="modal fade" role="dialog">
@@ -162,7 +157,7 @@
     </div>
 
     <div class="text-center">
-        <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+        <button class="btn btn-unique" id="buttonsend">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
     </div>
 
 </form>
@@ -207,7 +202,7 @@
 
 <!-- Heading -->
 <div class = "container">
-	<h1><a href="http://nakamotoinstitute.org/bitcoin/" target="_blank">Cryptocurrency</a></h1>
+	<h1>Cryptocurrency</h1>
 </div>
 
 	<!-- BitCoin Section -->
@@ -267,9 +262,9 @@
 	<div class = "row">
 			<div class="col-sm-6">
     		<div class="input-group-lg">
-      		<input type="text" class="form-control" placeholder="Search for your stock">
+      		<input type="text" class="form-control" id="userInput" placeholder="Search for your stock">
       			<span class="input-group-btn">
-        			<button class="btn btn-default" type="button">Go!</button>
+        			<button class="btn btn-default stockSearch" id="goButton" type="submit">Go!</button>
       			</span>
     		</div><!-- /input-group -->
   		</div><!-- /.col-sm-6 -->
@@ -284,27 +279,27 @@
 	
 	<section>
 	<div class = "row">
-		 <div class="col-sm-3 stockCards z-depth-2">
+		 <div class="col-sm-3 z-depth-2">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 1</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
+  <div class="col-sm-3 z-depth-2">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 2</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
+  <div class="col-sm-3 z-depth-2">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 3</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -313,27 +308,27 @@
   </div>
 	</div>
 	<div class = "row">
-		<div class="col-sm-3 stockCards z-depth-2">
+		<div class="col-sm-3 z-depth-2">
     	<div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 4</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
+  <div class="col-sm-3 z-depth-2">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 5</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
+  <div class="col-sm-3 z-depth-2">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body stockCards">
         <a href="#"><img src=""></a>
         <h4 class="card-title">Top Producing Stock 6</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -343,6 +338,7 @@
 	</div>
 	</section>
 </div>	
+
 <footer class="navbar navbar-static-bottom z-depth-2">
   <div class="container">
     <p class = "footerContent">&#169 2018 alpha Coders</p>
@@ -350,6 +346,8 @@
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script type="text/javascript" src="assets/javascript/gotCoinJS.js"></script>
+<script type="text/javascript" src="assets/javascript/alphavantageAPI.js"></script>
 <script type="text/javascript" src="assets/javascript/gotCoin.js"></script>
 </body>
 </html>
