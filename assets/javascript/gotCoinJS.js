@@ -1,59 +1,37 @@
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
-    authDomain: "gotcoin-db44a.firebaseapp.com",
-    databaseURL: "https://gotcoin-db44a.firebaseio.com",
-    projectId: "gotcoin-db44a",
-    storageBucket: "",
-    messagingSenderId: "492118808139"
+ var config = {
+    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
+    authDomain: "gotcoin-657c2.firebaseapp.com",
+    databaseURL: "https://gotcoin-657c2.firebaseio.com",
+    projectId: "gotcoin-657c2",
+    storageBucket: "gotcoin-657c2.appspot.com",
+    messagingSenderId: "399925748197"
   };
   firebase.initializeApp(config);
 
 
-// npm install crypto
-var crypto = require('crypto');
-// npm install request
-var request = require('request');
+var database = firebase.database();
 
-// Set these in your ENVironment, or enter them here with the actual string
-var apiKey = 'b55dab0731909d6e1869202afdb0f9d1b0223aed3294fa07b24036bef531d873';
-var apiSecret = '';
+$('#buttonsend').on("click", function(event){
+  event.preventDefault(event)
 
-
-//get unix time in seconds
-var timestamp = Math.floor(Date.now() / 1000);
-
-// set the parameter for the request message
-var req = {
-    method: 'GET',
-    path: '/v2/exchange-rates?currency=USD',
-    body: ''
-};
-
-var message = timestamp + req.method + req.path + req.body;
-console.log(message);
-
-//create a hexedecimal encoded SHA256 signature of the message
-var signature = crypto.createHmac("sha256", apiSecret).update(message).digest("hex");
-
-//create the request options object
-var options = {
-    baseUrl: 'https://api.coinbase.com/',
-    url: req.path,
-    method: req.method,
-    headers: {
-        'CB-ACCESS-SIGN': signature,
-        'CB-ACCESS-TIMESTAMP': timestamp,
-        'CB-ACCESS-KEY': apiKey,
-        'CB-VERSION': '2015-07-22'
+    var yourName = $('#form3').val().trim();
+    var yourEmail = $('#form2').val().trim();
+    var subject = $('#form32').val().trim();
+    var yourMessage = $('#form8').val().trim();
+    
+    var loginData={
+      yourName: yourName,
+      yourEmail: yourEmail,
+      subject: subject,
+      yourMessage: yourMessage
     }
-};
-
-request(options,function(err, response){
-    if (err) console.log(err);
-    console.log(response.body);
-});
-
+    database.ref().push(loginData)
+    console.log(loginData.yourName)
+    console.log(loginData.yourEmail)
+    console.log(loginData.subject)
+    console.log(loginData.yourMessage)
+  }) // End of Tim firebase code
 
 
 // JORDAN
@@ -65,12 +43,15 @@ var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA"];
 
 
 
-$(".stockSearch").on('click', function(){
+//$(".stockSearch").on('click', function(){
 
     // API url to get stock info
     var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
     var userStockSearch = $(".form-control").val().trim();
-    var alphavantageURL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + userStockSearch + "&interval=1min" + alphavantageApiKey;
+    for (var i = 0; i < presetStockArray.length; i++){
+    var alphavantageURL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + presetStockArray[i] + "&interval=1min" + alphavantageApiKey;
+
+    }
 
     $.ajax({
         url: alphavantageURL,
@@ -84,6 +65,8 @@ $(".stockSearch").on('click', function(){
         // gettin user input
         var results = response;
 
+        console.log(results.Symbol);
+
         // getting the current date to show daily stock information
         var currentTime = moment().format();
         var dateFormat = moment(currentTime).format("YYYY-MM-DD HH:MM:00"); 
@@ -94,6 +77,7 @@ $(".stockSearch").on('click', function(){
         var date = timeSeriesDaily[dateFormat];
 
         console.log(timeSeriesDaily);
+        
         console.log(date);
 
         // get the SYMBOL information to display in the cardbox as the boxcard header
@@ -123,5 +107,20 @@ $(".stockSearch").on('click', function(){
     
     });
     
+//});
+
+// labels are days 
+
+let myChart = $('#myChart').getContext('2d');
+
+let lineChart = new Chart(myChart, {
+  type: 'line',
+  data: {
+    labels: [],
+    dataset: []
+  },
+  options: {}
 });
+
+
 
