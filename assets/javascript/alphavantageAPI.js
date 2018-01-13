@@ -7,7 +7,7 @@ var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA"];
 
 
 
-$(".stockSearch").on('click', function(){
+$("#goButton").on('click', function(){
 
 	// API url to get stock info
 	var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";

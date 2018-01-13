@@ -59,16 +59,32 @@ $('#buttonsend').on("click", function(event){
     console.log(loginData.subject)
     console.log(loginData.yourMessage)
   })
-//Code for Go function under search for stock
-$('#goButton').on("click", function(event){
-  event.preventDefault(event)
-  var queryURL ="https://api.coinbase.com/v2/prices/USD/spot";
-  var searchQuery = $('#userInput').val().trim();
-  
+//Code for Go function under search for stock under review check changes under test changes 
 
+//$('#goButton').on("click", function(event){
+  //event.preventDefault(event)
+  //capture user query
+  //var searchQuery = $('#userInput').val().trim();
+  //build of search query
+
+
+
+  //running of user input query
+  //var runQuery=
+  //user input is replaced within currency_pair for example
+  //var queryURL ="https://api.coinbase.com/v2/prices/:currency_pair/buy";
+  //returning search results
+
+//Test Changes 
+  $("#goButton").on('click', function(){
+
+    // API url to get stock info
+    var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+    var userStockSearch = $("#userInput").val().trim();
+    var alphavantageURL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + userStockSearch + "&interval=1min" + alphavantageApiKey;
 
     $.ajax({
-      url: queryURL,
+      url: alphavantageURL,
       method: 'GET'
     }).done(function(response) {
       console.log(response);

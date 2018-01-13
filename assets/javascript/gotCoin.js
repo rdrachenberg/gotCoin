@@ -55,3 +55,21 @@ $('#buttonsend').on("click", function(event){
     console.log(loginData.subject)
     console.log(loginData.yourMessage)
   })
+
+$("#goButton").on('click', function(){
+
+    // API url to get stock info
+    var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+    var userStockSearch = $("#userInput").val().trim();
+    var alphavantageURL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + "aapl" + "&interval=1min" + alphavantageApiKey;
+
+    $.ajax({
+      url: alphavantageURL,
+      method: 'GET'
+    }).done(function(response) {
+      console.log(response);
+      console.log(alphavantageApiKey);
+      console.log(userStockSearch)
+      console.log(alphavantageApiKey)
+    });
+});
