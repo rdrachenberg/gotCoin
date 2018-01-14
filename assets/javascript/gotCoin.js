@@ -102,11 +102,10 @@ $('#buttonsend').on("click", function(event){
 var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA", "ALGN", "NRG", "FSLR", "VRTX", "MU", "WYNN", "BA", "PYPL", "RHT"];
 // API url to get stock info
 var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
-var userStockSearch = $(".form-control").val().trim();
+var userStockSearch = $("#userStockSearch").val().trim();
 
-
-  var alphavantageURL = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=AAPL, DST, SSNC, GOOGL, AMZN, TSLA, ALGN, NRG, FSLR, VRTX, MU, WYNN, BA, PYPL, RHT"  + alphavantageApiKey;  
-
+var alphavantageURL = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=AAPL, DST, SSNC, GOOGL, AMZN, TSLA, ALGN, NRG, FSLR, VRTX, MU, WYNN, BA, PYPL, RHT"  + alphavantageApiKey;  
+var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + userStockSearch + alphavantageApiKey;
 
   // ajax to call the API info
     $.ajax({ 
@@ -271,17 +270,7 @@ let lineChart = new Chart(myChart, {
   },
   options: {}
 });
-
-    });  
-
-
-    
-
-
-// labels are days 
-
-
-
+});  
 //bitcoin widget
 (function(b,i,t,C,O,I,N) {
     window.addEventListener('load',function() {
@@ -290,3 +279,21 @@ let lineChart = new Chart(myChart, {
       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+
+  $('#stockSubmit').on("click", function(){
+var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+var userStockSearch = $("#userStockSearch").val().trim();
+
+
+var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
+
+
+    console.log(userStockSearch);
+     $.ajax({ 
+        url: alphavantagesearchURL,
+        method: "GET"
+    }).done(function(response){
+      console.log(response);
+    });
+    var searchedStocks = $('<div>');
+  });
