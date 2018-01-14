@@ -1,13 +1,3 @@
-// // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
-//     authDomain: "gotcoin-db44a.firebaseapp.com",
-//     databaseURL: "https://gotcoin-db44a.firebaseio.com",
-//     projectId: "gotcoin-db44a",
-//     storageBucket: "",
-//     messagingSenderId: "492118808139"
-//   };
-//   firebase.initializeApp(config);
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -19,19 +9,62 @@ var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
 var addApiKeyHeader = function( xhr ) {
       xhr.setRequestHeader('Api-Key', apiKey)
     };
+  
     // CoinBase AJAX request
     $.ajax({
         url: queryURL,
         beforeSend: addApiKeyHeader,
         method: "GET"
     }).done(function(response) {
-         $("#bitcoin").html("Bitcoin Exchange Price:  " + response.data["0"].amount);
+        $("#bitcoin").html("Bitcoin Exchange Price:  " + response.data["0"].amount);
         $("#bitcoinCash").html("Bitcoin Cash:  " + response.data["1"].amount);
         $("#ethereum").html("Ethereum:  " + response.data["2"].amount);
         $("#liteCoin").html("LiteCoin:  " + response.data["3"].amount);
-        console.log(response);
         
-    });
+        var bitcoinData = response.data["0"].amount;
+        var bitcoinCashData = response.data["1"].amount;
+        var ethereumData = response.data["2"].amount;
+        var liteCoinData = response.data["3"].amount;
+
+        //Crypto Chart
+        let myCryptoChart = document.getElementById('myCryptoChart').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'PT Sans Narrow';
+        Chart.defaults.global.defaultFontSize = 18;
+        
+        let lineChart = new Chart(myCryptoChart, {
+          type: 'pie',
+        data: {
+          labels: ['BitCoin', 'BitcoinCash', 'Ethereum', 'LiteCoin'],
+          datasets: [{
+            label: "Comparisons",
+            data: [
+              bitcoinData,
+              bitcoinCashData,
+              ethereumData,
+              liteCoinData 
+          ],
+          backgroundColor:[
+          '#c8c3cc',
+          '#563f46',
+          '#8ca3a3',
+          '#484f4f'
+          ],
+          borderwidth: 1,
+          borderColor: '#3b3a36',
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'white'
+        }]
+      },
+      options: {
+        title:{
+        display: true,
+        text: 'Crypto Currency Price Comparisons',
+        fontSize: 25
+      }
+    }
+  });
+
+});
 // End CoinBase API Call
 
 // Initialize Firebase
@@ -63,209 +96,191 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
-    console.log(loginData.yourName)
-    console.log(loginData.yourEmail)
-    console.log(loginData.subject)
-    console.log(loginData.yourMessage)
   }) // End of Tim firebase code
 
-
-// JORDAN
 // create an array that holds stocks to display in the six stock box cards automatically.
-var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA"];
+var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA", "ALGN", "NRG", "FSLR", "VRTX", "MU", "WYNN", "BA", "PYPL", "RHT"];
+// API url to get stock info
+var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+var userStockSearch = $(".form-control").val().trim();
 
 
-// if user searches then remove the #5 in the array and add user input into #0 in the array
+  var alphavantageURL = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=AAPL, DST, SSNC, GOOGL, AMZN, TSLA, ALGN, NRG, FSLR, VRTX, MU, WYNN, BA, PYPL, RHT"  + alphavantageApiKey;  
 
 
-
-//$(".stockSearch").on('click', function(){
-
-    // API url to get stock info
-    var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
-    var userStockSearch = $(".form-control").val().trim();
-    for (var i = 0; i < presetStockArray.length; i++){
-    var alphavantageURL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + presetStockArray[i] + "&interval=1min" + alphavantageApiKey;
-
-    }
-
-    $.ajax({
+  // ajax to call the API info
+    $.ajax({ 
         url: alphavantageURL,
         method: "GET"
-      })
-
-    
-    .done(function(response) {
-
+    }).done(function(response) {
         console.log(response);
-        // gettin user input
-        var results = response;
+        console.log(response["Stock Quotes"]["0"]);
+        console.log(response["Stock Quotes"]["1"]);
+        console.log(response["Stock Quotes"]["2"]);
+        console.log(response["Stock Quotes"]["3"]);
+        console.log(response["Stock Quotes"]["4"]);
+        console.log(response["Stock Quotes"]["5"]);
 
-        console.log(results.Symbol);
-
-        // getting the current date to show daily stock information
-        var currentTime = moment().format();
-        var dateFormat = moment(currentTime).format("YYYY-MM-DD HH:MM:00"); 
-        console.log("CURRENT TIME: " + moment(currentTime).format("YYYY-MM-DD HH:MM:00"));
-
-        // going inside the API and getting the information to display in the cardboxes 
-        var timeSeriesDaily = results["Time Series (1min)"];
-        var date = timeSeriesDaily[dateFormat];
-
-        console.log(timeSeriesDaily);
-        
-        console.log(date);
-
-        // get the SYMBOL information to display in the cardbox as the boxcard header
-        var metaData = results["Meta Data"];
-        var stockSymbol = metaData["2. Symbol"];
-        console.log(stockSymbol);
-
-        // storing the date into stockInformation variable so I can dsiplay the stockInformation to the HTML cards 
-        var stockInformation = date;
-        console.log(stockInformation);
-
-        
-        // for loop to add stockArray to box cards
-        // after search then remove #5 of array and add #0 place of array with user Stock search val.  ONLY IF USER INPUT IS VALID
-        for (i = 0; i < presetStockArray.length; i++){
-            
-            // displaying stock Info dynamivally to the 
-            var newDiv = $('<div>');
-            newDiv.addClass('stockInfo' + i);
-            $('.stockInfo' + i).text('<h2>' + stockSymbol + '</h2');
-
-            $('.stockCards').append(newDiv);
+        var apple = {
+          symbol: response["Stock Quotes"]["0"]["1. symbol"],
+          price: response["Stock Quotes"]["0"]["2. price"],
+          volume: response["Stock Quotes"]["0"]["3. volume"],
+          timestamp: response["Stock Quotes"]["0"]["4. timestamp"]
         }
 
+        var dst = {
+          symbol: response["Stock Quotes"]["1"]["1. symbol"],
+          price: response["Stock Quotes"]["1"]["2. price"],
+          volume: response["Stock Quotes"]["1"]["3. volume"],
+          timestamp: response["Stock Quotes"]["1"]["4. timestamp"]
+        }
 
-        // $('.card-body').text(newDiv);
-    
-    });
-    
-//});
+        var ssnc = {
+          symbol: response["Stock Quotes"]["2"]["1. symbol"],
+          price: response["Stock Quotes"]["2"]["2. price"],
+          volume: response["Stock Quotes"]["2"]["3. volume"],
+          timestamp: response["Stock Quotes"]["2"]["4. timestamp"]
+        } 
+        
+        var google = {
+          symbol: response["Stock Quotes"]["3"]["1. symbol"],
+          price: response["Stock Quotes"]["3"]["2. price"],
+          volume: response["Stock Quotes"]["3"]["3. volume"],
+          timestamp: response["Stock Quotes"]["3"]["4. timestamp"]
+        }
 
-// labels are days 
+        var amazon = {
+          symbol: response["Stock Quotes"]["4"]["1. symbol"],
+          price: response["Stock Quotes"]["4"]["2. price"],
+          volume: response["Stock Quotes"]["4"]["3. volume"],
+          timestamp: response["Stock Quotes"]["4"]["3. volume"]
+        }
 
-//Chart 1
+        var tesla = {
+          symbol: response["Stock Quotes"]["5"]["1. symbol"],
+          price: response["Stock Quotes"]["5"]["2. price"],
+          volume: response["Stock Quotes"]["5"]["3. volume"],
+          timestamp: response["Stock Quotes"]["5"]["4. timestamp"]
+        }
+
+        var align = {
+          symbol: response["Stock Quotes"]["6"]["1. symbol"],
+          price: response["Stock Quotes"]["6"]["2. price"],
+          volume: response["Stock Quotes"]["6"]["3. volume"],
+          timestamp: response["Stock Quotes"]["6"]["4. timestamp"]
+        }
+
+        var nrg = {
+          symbol: response["Stock Quotes"]["7"]["1. symbol"],
+          price: response["Stock Quotes"]["7"]["2. price"],
+          volume: response["Stock Quotes"]["7"]["3. volume"],
+          timestamp: response["Stock Quotes"]["7"]["4. timestamp"]
+        }
+
+        var firstSolar  = {
+          symbol: response["Stock Quotes"]["8"]["1. symbol"],
+          price: response["Stock Quotes"]["8"]["2. price"],
+          volume: response["Stock Quotes"]["8"]["3. volume"],
+          timestamp: response["Stock Quotes"]["8"]["4. timestamp"]
+        }
+
+        var vertex = {
+          symbol: response["Stock Quotes"]["9"]["1. symbol"],
+          price: response["Stock Quotes"]["9"]["2. price"],
+          volume: response["Stock Quotes"]["9"]["3. volume"],
+          timestamp: response["Stock Quotes"]["9"]["4. timestamp"]
+        }
+
+        var micron = {
+          symbol: response["Stock Quotes"]["10"]["1. symbol"],
+          price: response["Stock Quotes"]["10"]["2. price"],
+          volume: response["Stock Quotes"]["10"]["3. volume"],
+          timestamp: response["Stock Quotes"]["10"]["4. timestamp"]
+        }
+
+        var wynn = {
+          symbol: response["Stock Quotes"]["11"]["1. symbol"],
+          price: response["Stock Quotes"]["11"]["2. price"],
+          volume: response["Stock Quotes"]["11"]["3. volume"],
+          timestamp: response["Stock Quotes"]["11"]["4. timestamp"]
+        }
+
+        var boeing = {
+          symbol: response["Stock Quotes"]["12"]["1. symbol"],
+          price: response["Stock Quotes"]["12"]["2. price"],
+          volume: response["Stock Quotes"]["12"]["3. volume"],
+          timestamp: response["Stock Quotes"]["12"]["4. timestamp"]
+        }
+
+        var paypal = {
+          symbol: response["Stock Quotes"]["13"]["1. symbol"],
+          price: response["Stock Quotes"]["13"]["2. price"],
+          volume: response["Stock Quotes"]["13"]["3. volume"],
+          timestamp: response["Stock Quotes"]["13"]["4. timestamp"]
+        }
+
+        var redhat = {
+          symbol: response["Stock Quotes"]["14"]["1. symbol"],
+          price: response["Stock Quotes"]["14"]["2. price"],
+          volume: response["Stock Quotes"]["14"]["3. volume"],
+          timestamp: response["Stock Quotes"]["14"]["4. timestamp"]
+        }
+        //Chart 1
 let myChart = $('#myChart');
 
 let lineChart = new Chart(myChart, {
-  type: 'line',
+  type: 'bar',
   data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
+    labels: [apple.symbol, dst.symbol, ssnc.symbol, google.symbol, amazon.symbol, tesla.symbol, align.symbol, nrg.symbol, firstSolar.symbol, vertex.symbol, micron.symbol, wynn.symbol, boeing.symbol, paypal.symbol, redhat.symbol],
+    datasets: [{
+      label: "Price Snapshot",
       data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
+        apple.price,
+        dst.price,
+        ssnc.price,
+        google.price,
+        amazon.price,
+        tesla.price,
+        align.price,
+        nrg.price,
+        firstSolar.price,
+        vertex.price,
+        micron.price,
+        wynn.price,
+        boeing.price,
+        paypal.price,
+        redhat.price
+      ],
+       backgroundColor:[
+          '#563f46',
+          '#9fa9a3',
+          '#484f4f',
+          '#454140',
+          '#b2c2bf',
+          '#c0ded9',
+          '#3b3a30',
+          '#e4d1d1',
+          '#b9b0b0',
+          '#7a3b2e',
+          '#77a8a8',
+          '#618685',
+          '#80ced6',
+          '#c2d4dd'
+          ]
     }]
   },
   options: {}
 });
 
-// chart 2
-let myChart2 = $('#myChart2');
+    });  
 
-let lineChart2 = new Chart(myChart2, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
-      data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
-    }]
-  },
-  options: {}
-});
 
-// chart 3
-let myChart3 = $('#myChart3');
+    
 
-let lineChart3 = new Chart(myChart3, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
-      data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
-    }]
-  },
-  options: {}
-});
 
-// chart 4
-let myChart4 = $('#myChart4');
+// labels are days 
 
-let lineChart4 = new Chart(myChart4, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
-      data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
-    }]
-  },
-  options: {}
-});
 
-// chart 5
-let myChart5 = $('#myChart5');
-
-let lineChart5 = new Chart(myChart5, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
-      data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
-    }]
-  },
-  options: {}
-});
-
-// chart 6
-let myChart6 = $('#myChart6');
-
-let lineChart6 = new Chart(myChart6, {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
-      label: 'Amount',
-      data:[
-        200,
-        150,
-        410.05,
-        209 
-      ]
-    }]
-  },
-  options: {}
-});
 
 //bitcoin widget
 (function(b,i,t,C,O,I,N) {

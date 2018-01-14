@@ -12,7 +12,7 @@ a, .navbar-brand{
 }
 
 .cryptoCards{
-	background: #c0dfd9;
+	background: #e9ece5;
 	border-radius: 1em;
 	margin: 4.1%;
 	padding: 1%;
@@ -106,4 +106,17 @@ h4{
 	font-weight: bold;
 	text-decoration: underline;
 	text-align: center;
+}
+
+#stockCard{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-right: 20%;
+}
+#myCryptoChart{
+		width: 100%;
+}
+
+button{
+	background: black;
 }
