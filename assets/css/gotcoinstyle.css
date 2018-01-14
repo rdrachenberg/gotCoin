@@ -120,3 +120,6 @@ h4{
 button{
 	background: black;
 }
+#inputStockSearch{
+	display: none;
+}
