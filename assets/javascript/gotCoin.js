@@ -1,13 +1,13 @@
-// // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
-//     authDomain: "gotcoin-db44a.firebaseapp.com",
-//     databaseURL: "https://gotcoin-db44a.firebaseio.com",
-//     projectId: "gotcoin-db44a",
-//     storageBucket: "",
-//     messagingSenderId: "492118808139"
-//   };
-//   firebase.initializeApp(config);
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
+    authDomain: "gotcoin-db44a.firebaseapp.com",
+    databaseURL: "https://gotcoin-db44a.firebaseio.com",
+    projectId: "gotcoin-db44a",
+    storageBucket: "",
+    messagingSenderId: "492118808139"
+  };
+  firebase.initializeApp(config);
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -16,13 +16,41 @@ var apiKey = "MWAieJmDyYfwCYYC";
 
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
 
+var timeStamp = moment();
+
+var clientId = "ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe"
+
+var gotCoin = $('#gotCoin').on('click');
+
+var cbValidateURL = "https://www.coinbase.com/oauth/authorize?response_type=code&client_id= ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https://rdrachenberg.github.io/gotCoin/&state=SECURE_RANDOM&scope=wallet:accounts:read "
+
+var cbVersion = '2018-01-09'
+
+// header information to include before doing coinbase ajax request
 var addApiKeyHeader = function( xhr ) {
-      xhr.setRequestHeader('Api-Key', apiKey)
+      xhr.setRequestHeader('Api-Key', apiKey),
+      xhr.setRequestHeader('time', timeStamp),
+      xhr.setRequestHeader('client_id', clientId),
+      xhr.setRequestHeader('CB-VERSION', cbVersion)
+
     };
+// end header information in coinbase ajax request     
+
+
+// var Client = require('coinbase').Client;
+
+// var client = new Client({'apiKey': 'API KEY',
+//                          'apiSecret': 'API SECRET'});
+
+// client.createAccount({name: 'New Wallet'}, function(err, account) {
+//   console.log(account);
+// });
     // CoinBase AJAX request
     $.ajax({
         url: queryURL,
         beforeSend: addApiKeyHeader,
+
+
         method: "GET"
     }).done(function(response) {
          $("#bitcoin").html("Bitcoin Exchange Price:  " + response.data["0"].amount);
