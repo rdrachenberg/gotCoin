@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>gotCoin?</title>
-	<meta charset="utf-8">
-	<!-- Bootstrap link -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- MD Bootstrap -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
-	<!-- Google Fonts API -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-	<!-- jQuery Link -->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- moment.js Time script -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <title>gotCoin?</title>
+    <meta charset="utf-8">
+    <!-- Bootstrap link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+  <!-- MD Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
+    
+    <!-- Google Fonts API -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    
+  <!-- jQuery Link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- Moment JS cdn -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- chartJS cdn -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
+  
   <!-- Link to CSS File -->
-	<link rel="stylesheet" type="text/css" href="assets/css/gotCoinStyle.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
 </head>
 <body>
-	<!-- Navbar Section -->
-	<nav class="navbar navbar-static-top z-depth-2">
+    <!-- Navbar Section with md-->
+    <nav class="navbar navbar-static-top z-depth-2">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -35,160 +46,252 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAboutUsModal">About Us</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Resources</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myLoginModal">Login/SignUp</button>
+        </li>
       </ul>
     </div><!-- end of collapse -->
   </div><!-- end of container -->
 </nav> <!-- end of Navbar section -->
-
-<!-- Heading -->
-<div class = "container">
-	<h1>Cryptocurrency</h1>
+<!-- About Us Modal -->
+<div id="myAboutUsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">alpha Coders - Developers</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row">
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/tsanders1114/tsanders1114-2-.github.io" target="_blank"><img src="assets/images/timImage.jpg" class = "thumbnail"></a>
+            <p>Tim Sanders</p>
+          </div>
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/rdrachenberg" target="_blank"><img src="assets/images/ryanImage.jpg" class = "thumbnail"></a>
+            <p>Ryan Drachenberg</p>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/BradleyLawson" target="_blank"><img src="assets/images/bradImage.jpg" class = "thumbnail"></a>
+            <p>Brad Lawson</p>
+          </div>
+          <div class = "col-sm-6 about">
+            <a href="https://github.com/jkue3000/jkue3000.github.io" target="_blank"><img src="assets/images/jordanImage.jpg" class = "thumbnail"></a>
+            <p>Jordan Kue</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-	<!-- BitCoin Section -->
-<div class = "container">
-	
-	<section class = "bitcoinSection">
-	<div class = "row">
-		 <div class="col-sm-5 cryptoCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Bitcoin</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+<!-- Resources ModalModal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Resources</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row">
+          <div class = "col-sm-6">
+            <a href="https://www.forbes.com/sites/investor/2011/07/11/the-best-ways-to-learn-about-investing/#1eae82593492" target="_blank"><p>Forbes</p></a>
+            <a href="http://www.businessinsider.com/resources-to-learn-about-investing-2015-1" target="_blank"><p>Business Insider</p></a>
+            <a href="https://thecollegeinvestor.com/15601/the-best-investing-blogs/" target="_blank"><p>College Investor</p></a>
+            <a href="https://www.investopedia.com/" target="_blank"><p>Investopedia</p></a>
+           
+          </div>
+          <div class = "col-sm-6">
+            <a href="https://www.wsj.com/" target="_blank"><p>Wall Street Journal</p></a>
+            <a href="https://www.nyse.com/index" target="_blank"><p>New York Stock Exchange</p></a>
+            <a href="https://www.coinbase.com/" target="_blank"><p>Coinbase</p></a>
+            <a href="https://www.investors.com/" target="_blank"><p>Investor's Business Daily</p></a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-  <div class="col-sm-5 cryptoCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Bitcoin Cash</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+</div>
+<!-- Login ModalModal -->
+<div id="myLoginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+    <div class="modal-body">
+    <!-- Form contact -->
+<form>
+    <p class="h5 text-center mb-4">Write to us</p>
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="form3" class="form-control">
+        <label for="form3">Your name</label>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" id="form2" class="form-control">
+        <label for="form2">Your email</label>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-tag prefix grey-text"></i>
+        <input type="text" id="form32" class="form-control">
+        <label for="form34">Subject</label>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
+        <label for="form8">Your message</label>
+    </div>
+    <div class="text-center">
+        <button class="btn" id="buttonsend">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+    </div>
+</form>
+<!-- Form contact -->
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-	</div>
-	<div class = "row">
-		 <div class="col-sm-5 cryptoCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Ethereum</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-5 cryptoCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">LiteCoin</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-	</div>
-	</section>
-</div>	
-
+</div>
+<!-- TradingView Widget BEGIN -->
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+  "symbols": [
+    {
+      "proName": "INDEX:SPX",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "INDEX:IUXX",
+      "title": "Nasdaq 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "NYMEX:CL1!",
+      "title": "Crude Oil"
+    },
+    {
+      "proName": "FX_IDC:XAUUSD",
+      "title": "Gold"
+    }
+  ],
+  "locale": "en"
+}</script>
+<!-- TradingView Widget END -->
+</div>
 <!-- Heading -->
 <div class = "container">
-	<div class = "row">
-		<div class = col-sm-6>
-			<h1>Stocks</h1>
-		</div>
-	</div>
-	<div class = "row">
-			<div class="col-sm-6">
-    		<div class="input-group-lg">
-      		<input type="text" class="form-control" placeholder="Search for your stock">
-      			<span class="input-group-btn">
-        			<button class="btn btn-default stockSearch" type="submit">Go!</button>
-      			</span>
-    		</div><!-- /input-group -->
-  		</div><!-- /.col-sm-6 -->
-		</div>
-	</div>
-	
-	
-
-	<!-- Stock Market Section -->
-
-	<div class = "container">
-	
-	<section>
-	<div class = "row">
-		 <div class="col-sm-3 stockCards z-depth-2">
+    <h1><a href="http://nakamotoinstitute.org/bitcoin/" target="_blank">Cryptocurrency</a></h1>
+</div>
+    <!-- BitCoin Section -->
+<div class = "container-fluid">
+    
+    <section class = "bitcoinSection">
+    <div class = "row">
+         <div class="col-sm-5 cryptoCards hoverable">
+    <div class="card">
+      <!-- <div class="card-body"> -->
+        <h4 class="card-title" id="bitcoin">Bitcoin</h4>
+        <div class="btcwdgt-chart"></div>
+      <!-- </div> -->
+    </div>
+  </div>
+  <div class="col-sm-5 cryptoCards hoverable">
     <div class="card">
       <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 1</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
+        <h4 class="card-title" id="bitcoinCash">Bitcoin Cash</h4>
+        <div class="btcwdgt-chart" bw-cash="true"></div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
+    </div>
+<div class = "row">
+  <div class ="container">
+  <div class="col-lg-12 hoverable">
     <div class="card">
       <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 2</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
+        <canvas id="myCryptoChart"></canvas>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 3</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+  </section>
+</div>
+<!-- Stocks Heading -->
+<div class = "container">
+    <div class = "row">
+        <div class = col-sm-6>
+            <h1>Stocks</h1>
+        </div>
+    </div>
+    <div class = "row">
+            <div class="col-sm-6">
+            <div class="input-group-lg">
+            <input type="text" class="form-control" placeholder="Search for your stock" id = "userStockSearch">
+                <span class="input-group-btn">
+                    <button class="btn btn-default stockSearch" type="submit" id = "stockSubmit">Go!</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-sm-6 -->
+      <div class="col-sm-6">
+        <div class = "inputStocks">
+          
+        </div><!-- /input-group -->
+      </div><!-- /.col-sm-6 -->
+        </div>
+    </div>
+<!-- Stock Market Section -->
+   <div class = "row">
+<div class = "container">
+  <div class="col-lg-12 hoverable" id = "stockCard">
+    <div class="card" >
+      <div class = "card-body">
+        <canvas id="myChart"></canvas>
       </div>
     </div>
   </div>
-	</div>
-	<div class = "row">
-		<div class="col-sm-3 stockCards z-depth-2">
-    	<div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 4</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
+</div>
+</div>
+<!-- Search Chart -->
+<div class = "row">
+<div class = "container" id = "inputStockSearch">
+  <div class="col-lg-12 hoverable" id = "stockCard">
+    <div class="card" >
+      <div class = "card-body">
+        <canvas id="searchChart"></canvas>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 stockCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 5</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 stockCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title stockTitle">Top Producing Stock 6</h4>
-        <p class="card-text stockText">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-	</div>
-	</section>
-</div>	
+</div>
+</div>
 
 <footer class="navbar navbar-static-bottom z-depth-2">
   <div class="container">
     <p class = "footerContent">&#169 2018 alpha Coders</p>
   </div>
 </footer>
-
+<!-- firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script type="text/javascript" src="assets/javascript/gotCoinJS.js"></script>
+<!-- js file -->
+<script type="text/javascript" src="assets/javascript/gotCoin.js"></script>
 </body>
 </html>
