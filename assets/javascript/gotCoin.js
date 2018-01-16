@@ -112,13 +112,7 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
         url: alphavantageURL,
         method: "GET"
     }).done(function(response) {
-        console.log(response);
-        console.log(response["Stock Quotes"]["0"]);
-        console.log(response["Stock Quotes"]["1"]);
-        console.log(response["Stock Quotes"]["2"]);
-        console.log(response["Stock Quotes"]["3"]);
-        console.log(response["Stock Quotes"]["4"]);
-        console.log(response["Stock Quotes"]["5"]);
+        
 
         var apple = {
           symbol: response["Stock Quotes"]["0"]["1. symbol"],
@@ -232,7 +226,7 @@ let lineChart = new Chart(myChart, {
   data: {
     labels: [apple.symbol, dst.symbol, ssnc.symbol, google.symbol, amazon.symbol, tesla.symbol, align.symbol, nrg.symbol, firstSolar.symbol, vertex.symbol, micron.symbol, wynn.symbol, boeing.symbol, paypal.symbol, redhat.symbol],
     datasets: [{
-      label: "Price Snapshot",
+      label: "Price Comparisons",
       data:[
         apple.price,
         dst.price,
@@ -280,150 +274,306 @@ let lineChart = new Chart(myChart, {
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
 
-  $('#stockSubmit').on("click", function(){
-    $('#stockSubmit').reset();
+// *******************STOCK SEARCH SECTION**********************
+//**************************************************************
+$('#stockSubmit').on("click", function(){
 var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
 var userStockSearch = $("#userStockSearch").val().trim();
-
-
 var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
-
-
-    console.log(userStockSearch);
-     $.ajax({ 
-        url: alphavantagesearchURL,
-        method: "GET"
-    }).done(function(response){
-      console.log(response);
-      var label = response["Meta Data"]["1. Information"];
-      var symbol = response["Meta Data"]["2. Symbol"];
-      var month = {
-        jan2017:{
-          open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
-        },
-        feb2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-02-28"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-02-28"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-02-28"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-02-28"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-02-28"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-02-28"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-02-28"]["7. dividend amount"]
-        },
-        march2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-03-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-03-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-03-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-03-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-03-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-03-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-03-31"]["7. dividend amount"]
-        },
-        april2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-04-28"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-04-28"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-04-28"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-04-28"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-28"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-04-28"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-04-28"]["7. dividend amount"]
-        },
-        may2017:{
-          open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-05-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-05-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-05-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-05-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-05-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-05-31"]["7. dividend amount"]
-        },
-        june2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-06-30"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-06-30"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-06-30"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-06-30"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-06-30"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-06-30"]["7. dividend amount"]
-        },
-        july2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-07-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-07-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-07-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-07-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-07-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-07-31"]["7. dividend amount"]
-        },
-        august2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-08-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-08-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-08-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-08-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-08-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-08-31"]["7. dividend amount"]
-        },
-        september2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-09-29"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-09-29"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-09-29"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-09-29"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-29"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-09-29"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-09-29"]["7. dividend amount"]
-        },
-        october2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-10-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-10-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-10-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-10-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-10-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-10-31"]["7. dividend amount"]
-        },
-        november2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-11-30"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-11-30"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-11-30"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-11-30"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-11-30"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-11-30"]["7. dividend amount"]
-        },
-        december2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-12-29"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-12-29"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-12-29"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-12-29"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-29"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-12-29"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-12-29"]["7. dividend amount"]
-        },
-        january2018:{
-           open: response["Monthly Adjusted Time Series"]["2018-01-12"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2018-01-12"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2018-01-12"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2018-01-12"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2018-01-12"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2018-01-12"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2018-01-12"]["7. dividend amount"]
-        }
-      }
-    console.log(month.jan2017.open);
-    let myChart = $('#searchChart');
-      let lineChart = new Chart(myChart, {
-    type: 'bar',
+  $.ajax({ 
+    url: alphavantagesearchURL,
+      method: "GET"
+  }).done(function(response){
+    var label = response["Meta Data"]["1. Information"];
+    var symbol = response["Meta Data"]["2. Symbol"];
+    var month = {
+      jan2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
+      },
+      feb2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-02-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-02-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-02-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-02-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-02-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-02-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-02-28"]["7. dividend amount"]
+      },
+      march2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-03-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-03-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-03-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-03-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-03-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-03-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-03-31"]["7. dividend amount"]
+      },
+      april2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-04-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-04-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-04-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-04-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-04-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-04-28"]["7. dividend amount"]
+      },
+      may2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-05-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-05-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-05-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-05-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-05-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-05-31"]["7. dividend amount"]
+      },
+      june2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-06-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-06-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-06-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-06-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-06-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-06-30"]["7. dividend amount"]
+      },
+      july2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-07-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-07-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-07-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-07-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-07-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-07-31"]["7. dividend amount"]
+      },
+      august2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-08-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-08-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-08-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-08-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-08-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-08-31"]["7. dividend amount"]
+      },
+      september2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-09-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-09-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-09-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-09-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-09-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-09-29"]["7. dividend amount"]
+      },
+      october2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-10-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-10-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-10-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-10-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-10-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-10-31"]["7. dividend amount"]
+      },
+      november2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-11-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-11-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-11-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-11-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-11-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-11-30"]["7. dividend amount"]
+      },
+      december2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-12-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-12-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-12-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-12-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-12-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-12-29"]["7. dividend amount"]
+      },
+      // january2018:{
+      //   open: response["Monthly Adjusted Time Series"]["2018-01-12"]["1. open"],  
+      //   high: response["Monthly Adjusted Time Series"]["2018-01-12"]["2. high"],  
+      //   low: response["Monthly Adjusted Time Series"]["2018-01-12"]["3. low"],  
+      //   close: response["Monthly Adjusted Time Series"]["2018-01-12"]["4. close"],  
+      //   adjustedClose: response["Monthly Adjusted Time Series"]["2018-01-12"]["5. adjusted close"], 
+      //   volume: response["Monthly Adjusted Time Series"]["2018-01-12"]["6. volume"],   
+      //   dividend: response["Monthly Adjusted Time Series"]["2018-01-12"]["7. dividend amount"]
+      // }
+    }
+  let myChart = $('#searchChart');
+  let lineChart = new Chart(myChart, {
+    type: 'line',
     data: {
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "October", "November", "December"],
       datasets: [{
-        label: symbol,
+        label: symbol + " Opening Price",
+        data:[
+          month.jan2017.open,
+          month.feb2017.open,
+          month.march2017.open,
+          month.april2017.open,
+          month.may2017.open,
+          month.june2017.open,
+          month.july2017.open,
+          month.august2017.open,
+          month.september2017.open,
+          month.october2017.open,
+          month.november2017.open,
+          month.december2017.open,
+        ]
+      }]
+    },
+    options: {}
+  });
+});
+// display onclick display charts
+  $('#inputStockSearch').css("display", "block");
+});
+
+//************************Change to Close info**************************
+//**********************************************************************
+$('#searchChart').on("click", function(){
+  var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+  var userStockSearch = $("#userStockSearch").val().trim();
+  var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
+
+$.ajax({ 
+    url: alphavantagesearchURL,
+      method: "GET"
+  }).done(function(response){
+    var label = response["Meta Data"]["1. Information"];
+    var symbol = response["Meta Data"]["2. Symbol"];
+    var month = {
+      jan2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
+      },
+      feb2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-02-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-02-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-02-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-02-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-02-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-02-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-02-28"]["7. dividend amount"]
+      },
+      march2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-03-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-03-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-03-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-03-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-03-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-03-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-03-31"]["7. dividend amount"]
+      },
+      april2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-04-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-04-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-04-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-04-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-04-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-04-28"]["7. dividend amount"]
+      },
+      may2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-05-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-05-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-05-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-05-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-05-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-05-31"]["7. dividend amount"]
+      },
+      june2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-06-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-06-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-06-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-06-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-06-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-06-30"]["7. dividend amount"]
+      },
+      july2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-07-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-07-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-07-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-07-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-07-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-07-31"]["7. dividend amount"]
+      },
+      august2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-08-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-08-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-08-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-08-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-08-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-08-31"]["7. dividend amount"]
+      },
+      september2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-09-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-09-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-09-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-09-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-09-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-09-29"]["7. dividend amount"]
+      },
+      october2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-10-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-10-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-10-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-10-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-10-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-10-31"]["7. dividend amount"]
+      },
+      november2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-11-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-11-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-11-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-11-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-11-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-11-30"]["7. dividend amount"]
+      },
+      december2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-12-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-12-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-12-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-12-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-12-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-12-29"]["7. dividend amount"]
+      },
+      // january2018:{
+      //   open: response["Monthly Adjusted Time Series"]["2018-01-12"]["1. open"],  
+      //   high: response["Monthly Adjusted Time Series"]["2018-01-12"]["2. high"],  
+      //   low: response["Monthly Adjusted Time Series"]["2018-01-12"]["3. low"],  
+      //   close: response["Monthly Adjusted Time Series"]["2018-01-12"]["4. close"],  
+      //   adjustedClose: response["Monthly Adjusted Time Series"]["2018-01-12"]["5. adjusted close"], 
+      //   volume: response["Monthly Adjusted Time Series"]["2018-01-12"]["6. volume"],   
+      //   dividend: response["Monthly Adjusted Time Series"]["2018-01-12"]["7. dividend amount"]
+      // }
+    }
+  let myChart = $('#searchChart');
+  let lineChart = new Chart(myChart, {
+    type: 'line',
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "October", "November", "December"],
+      datasets: [{
+        label: symbol + " Closing Price",
         data:[
           month.jan2017.close,
           month.feb2017.close,
@@ -456,10 +606,182 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     },
     options: {}
   });
-      });
- // display onclick display charts
-    $('#inputStockSearch').css("display", "block");
+
   });
+});
+
+$('#searchChart').on("click", function(){
+  var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+  var userStockSearch = $("#userStockSearch").val().trim();
+  var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
+
+$.ajax({ 
+    url: alphavantagesearchURL,
+      method: "GET"
+  }).done(function(response){
+    var label = response["Meta Data"]["1. Information"];
+    var symbol = response["Meta Data"]["2. Symbol"];
+    var month = {
+      jan2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
+      },
+      feb2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-02-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-02-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-02-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-02-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-02-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-02-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-02-28"]["7. dividend amount"]
+      },
+      march2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-03-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-03-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-03-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-03-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-03-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-03-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-03-31"]["7. dividend amount"]
+      },
+      april2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-04-28"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-04-28"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-04-28"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-04-28"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-28"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-04-28"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-04-28"]["7. dividend amount"]
+      },
+      may2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-05-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-05-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-05-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-05-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-05-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-05-31"]["7. dividend amount"]
+      },
+      june2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-06-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-06-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-06-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-06-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-06-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-06-30"]["7. dividend amount"]
+      },
+      july2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-07-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-07-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-07-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-07-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-07-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-07-31"]["7. dividend amount"]
+      },
+      august2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-08-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-08-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-08-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-08-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-08-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-08-31"]["7. dividend amount"]
+      },
+      september2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-09-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-09-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-09-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-09-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-09-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-09-29"]["7. dividend amount"]
+      },
+      october2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-10-31"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-10-31"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-10-31"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-10-31"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-31"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-10-31"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-10-31"]["7. dividend amount"]
+      },
+      november2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-11-30"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-11-30"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-11-30"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-11-30"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-11-30"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-11-30"]["7. dividend amount"]
+      },
+      december2017:{
+        open: response["Monthly Adjusted Time Series"]["2017-12-29"]["1. open"],  
+        high: response["Monthly Adjusted Time Series"]["2017-12-29"]["2. high"],  
+        low: response["Monthly Adjusted Time Series"]["2017-12-29"]["3. low"],  
+        close: response["Monthly Adjusted Time Series"]["2017-12-29"]["4. close"],  
+        adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-29"]["5. adjusted close"], 
+        volume: response["Monthly Adjusted Time Series"]["2017-12-29"]["6. volume"],   
+        dividend: response["Monthly Adjusted Time Series"]["2017-12-29"]["7. dividend amount"]
+      },
+      // january2018:{
+      //   open: response["Monthly Adjusted Time Series"]["2018-01-12"]["1. open"],  
+      //   high: response["Monthly Adjusted Time Series"]["2018-01-12"]["2. high"],  
+      //   low: response["Monthly Adjusted Time Series"]["2018-01-12"]["3. low"],  
+      //   close: response["Monthly Adjusted Time Series"]["2018-01-12"]["4. close"],  
+      //   adjustedClose: response["Monthly Adjusted Time Series"]["2018-01-12"]["5. adjusted close"], 
+      //   volume: response["Monthly Adjusted Time Series"]["2018-01-12"]["6. volume"],   
+      //   dividend: response["Monthly Adjusted Time Series"]["2018-01-12"]["7. dividend amount"]
+      // }
+    }
+  let myChart = $('#searchChart');
+  let lineChart = new Chart(myChart, {
+    type: 'line',
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "October", "November", "December"],
+      datasets: [{
+        label: symbol + " Volume",
+        data:[
+          month.jan2017.volume,
+          month.feb2017.volume,
+          month.march2017.volume,
+          month.april2017.volume,
+          month.may2017.volume,
+          month.june2017.volume,
+          month.july2017.volume,
+          month.august2017.volume,
+          month.september2017.volume,
+          month.october2017.volume,
+          month.november2017.volume,
+          month.december2017.volume,
+        ],
+        backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+      }]
+    },
+    options: {}
+  });
+
+  });
+});
 
     //});
 
