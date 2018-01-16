@@ -245,24 +245,37 @@ let lineChart = new Chart(myChart, {
 });
 });  
 
+function reset() {
+     $("#searchChart").empty();
+};
+
+// Onclick function to display chart Data of search stock
 $('#stockSubmit').on("click", function(){
-var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
-var userStockSearch = $("#userStockSearch").val().trim();
-var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
-    console.log(userStockSearch);
-     $.ajax({ 
-        url: alphavantagesearchURL,
-        method: "GET"
-    }).done(function(response){
+  
+  reset();
 
-      // if API call request equals UNDEFINED Alert(), else run code below
+  // url var to call from AJX
+  var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+  var userStockSearch = $("#userStockSearch").val().trim();
+  var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
 
+  console.log("THIS IS USERSTOCKSEARCH", userStockSearch);
 
-      console.log(response);
-      var label = response["Meta Data"]["1. Information"];
-      var symbol = response["Meta Data"]["2. Symbol"];
-      var month = {
-        jan2017:{
+  $.ajax({ 
+    url: alphavantagesearchURL,
+    method: "GET"
+  }).done(function(response){
+
+    console.log(response);
+
+    var symbol = response["Meta Data"]["2. Symbol"];
+    console.log("THIS IS SYMBOL RESPONSE", symbol);
+    // Title when user first loads
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (High)");
+
+    var month = {
+      
+      jan2017:{
           open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
@@ -271,131 +284,157 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
           volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
         },
-        feb2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-02-28"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-02-28"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-02-28"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-02-28"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-02-28"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-02-28"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-02-28"]["7. dividend amount"]
-        },
-         mar2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-03-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-03-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-03-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-03-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-03-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-03-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-03-31"]["7. dividend amount"]
-        },
-        apr2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-04-20"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-04-20"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-04-20"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-04-20"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-20"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-04-20"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-04-20"]["7. dividend amount"]
-        },
-        may2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
+
+      feb2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
+      },
+
+      mar2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-01-31"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-01-31"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-01-31"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-01-31"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-01-31"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-01-31"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-01-31"]["7. dividend amount"]
+      },
+
+      apr2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-04-28"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-04-28"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-04-28"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-04-28"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-04-28"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-04-28"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-04-28"]["7. dividend amount"]
+      },
+
+      may2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-05-31"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-05-31"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-05-31"]["3. low"],  
           close: response["Monthly Adjusted Time Series"]["2017-05-31"]["4. close"],  
           adjustedClose: response["Monthly Adjusted Time Series"]["2017-05-31"]["5. adjusted close"], 
           volume: response["Monthly Adjusted Time Series"]["2017-05-31"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-05-31"]["7. dividend amount"]
-        },
-        june2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
+      },
+
+      june2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-06-30"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-06-30"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-06-30"]["3. low"],  
           close: response["Monthly Adjusted Time Series"]["2017-06-30"]["4. close"],  
           adjustedClose: response["Monthly Adjusted Time Series"]["2017-06-30"]["5. adjusted close"], 
           volume: response["Monthly Adjusted Time Series"]["2017-06-30"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-06-30"]["7. dividend amount"]
-        },
-        july2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
+      },
+
+      july2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-07-31"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-07-31"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-07-31"]["3. low"],  
           close: response["Monthly Adjusted Time Series"]["2017-07-31"]["4. close"],  
           adjustedClose: response["Monthly Adjusted Time Series"]["2017-07-31"]["5. adjusted close"], 
           volume: response["Monthly Adjusted Time Series"]["2017-07-31"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-07-31"]["7. dividend amount"]
-        },
-        aug2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
+      },
+
+      aug2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-08-31"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-08-31"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-08-31"]["3. low"],  
           close: response["Monthly Adjusted Time Series"]["2017-08-31"]["4. close"],  
           adjustedClose: response["Monthly Adjusted Time Series"]["2017-08-31"]["5. adjusted close"], 
           volume: response["Monthly Adjusted Time Series"]["2017-08-31"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-08-31"]["7. dividend amount"]
-        },
-        sept2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-09-28"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-09-28"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-09-28"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-09-28"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-28"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-09-28"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-09-28"]["7. dividend amount"]
-        },
-        oct2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-10-30"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-10-30"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-10-30"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-10-30"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-30"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-10-30"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-10-30"]["7. dividend amount"]
-        },
-        nov2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
+      },
+
+      sept2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-09-29"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-09-29"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-09-29"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-09-29"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-09-29"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-09-29"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-09-29"]["7. dividend amount"]
+      },
+
+      oct2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-10-31"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-10-31"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-10-31"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-10-31"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-10-31"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-10-31"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-10-31"]["7. dividend amount"]
+      },
+
+      nov2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-11-30"]["1. open"],  
           high: response["Monthly Adjusted Time Series"]["2017-11-30"]["2. high"],  
           low: response["Monthly Adjusted Time Series"]["2017-11-30"]["3. low"],  
           close: response["Monthly Adjusted Time Series"]["2017-11-30"]["4. close"],  
           adjustedClose: response["Monthly Adjusted Time Series"]["2017-11-30"]["5. adjusted close"], 
           volume: response["Monthly Adjusted Time Series"]["2017-11-30"]["6. volume"],   
           dividend: response["Monthly Adjusted Time Series"]["2017-11-30"]["7. dividend amount"]
-        },
-        dec2017:{
-           open: response["Monthly Adjusted Time Series"]["2017-12-31"]["1. open"],  
-          high: response["Monthly Adjusted Time Series"]["2017-12-31"]["2. high"],  
-          low: response["Monthly Adjusted Time Series"]["2017-12-31"]["3. low"],  
-          close: response["Monthly Adjusted Time Series"]["2017-12-31"]["4. close"],  
-          adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-31"]["5. adjusted close"], 
-          volume: response["Monthly Adjusted Time Series"]["2017-12-31"]["6. volume"],   
-          dividend: response["Monthly Adjusted Time Series"]["2017-12-31"]["7. dividend amount"]
-        },
+      },
 
-      }
-      console.log(month.feb2017.volume);
-      console.log(label);
+      dec2017:{
+          open: response["Monthly Adjusted Time Series"]["2017-12-29"]["1. open"],  
+          high: response["Monthly Adjusted Time Series"]["2017-12-29"]["2. high"],  
+          low: response["Monthly Adjusted Time Series"]["2017-12-29"]["3. low"],  
+          close: response["Monthly Adjusted Time Series"]["2017-12-29"]["4. close"],  
+          adjustedClose: response["Monthly Adjusted Time Series"]["2017-12-29"]["5. adjusted close"], 
+          volume: response["Monthly Adjusted Time Series"]["2017-12-29"]["6. volume"],   
+          dividend: response["Monthly Adjusted Time Series"]["2017-12-29"]["7. dividend amount"]
+      },
+ 
+    }
+// END OF MONTH OBJECT VAR
+  
+  console.log(month.jan2017.open);
+  console.log(month.feb2017.open);
+  console.log(month.mar2017.open);
+  console.log(month.apr2017.open);
+  console.log(month.may2017.open);
+  console.log(month.june2017.open);
+  console.log(month.july2017.open);
+  console.log(month.aug2017.open);
+  console.log(month.sept2017.open);
+  console.log(month.oct2017.open);
+  console.log(month.nov2017.open);
+  console.log(month.dec2017.open);
 
-      let myChart = $('#searchChart');
-      let lineChart = new Chart(myChart, {
+  // graph to display on HTML
+  let myChart = $('#searchChart');
+  let lineChart = new Chart(myChart, {
     type: 'bar',
     data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "October", "November", "December"],
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       datasets: [{
         label: "Price Snapshot",
+
         data:[
-          month.jan2017.close,
-          month.feb2017.close,
-          month.mar2017.close,
-          month.apr2017.close,
-          month.may2017.close,
-          month.june2017.close,
-          month.july2017.close,
-          month.aug2017.close,
-          month.sept2017.close,
-          month.oct2017.close,
-          month.nov2017.close,
-          month.dec2017.close,
+          month.jan2017.high,
+          month.feb2017.high,
+          month.mar2017.high,
+          month.apr2017.high,
+          month.may2017.high,
+          month.june2017.high,
+          month.july2017.high,
+          month.aug2017.high,
+          month.sept2017.high,
+          month.oct2017.high,
+          month.nov2017.high,
+          month.dec2017.high 
         ],
+
         backgroundColor:[
             '#563f46',
             '#9fa9a3',
@@ -411,37 +450,373 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
             '#618685',
             ]
       }]
-    },
-    options: {}
+    }
   });
-      });
+// END OF GRAPH
+  
+  // displaying the graph on click
+  $('#inputStockSearch').css("display", "block");
 
-    // display charts above to the HTML
+  // START OF STOCK LOW ONCLICK
+  $('#stockLow').on('click', function(){
+
+    // reset function
+    reset();
+    
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Low)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.low,
+            month.feb2017.low,
+            month.mar2017.low,
+            month.apr2017.low,
+            month.may2017.low,
+            month.june2017.low,
+            month.july2017.low,
+            month.aug2017.low,
+            month.sept2017.low,
+            month.oct2017.low,
+            month.nov2017.low,
+            month.dec2017.low 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+  // END OF STOCKLOW ON CLICK FUNCTION
+
+  // START OF STOCK OPEN ONCLICK FUNCTION
+  $('#stockOpen').on('click', function(){
+
+    // reset function
+    reset();
+
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Open)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.open,
+            month.feb2017.open,
+            month.mar2017.open,
+            month.apr2017.open,
+            month.may2017.open,
+            month.june2017.open,
+            month.july2017.open,
+            month.aug2017.open,
+            month.sept2017.open,
+            month.oct2017.open,
+            month.nov2017.open,
+            month.dec2017.open 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+    // END OF STOCK OPEN ONCLCIK FUNCTION
+
+    // START OF STOCKCLOSE ONCLCIK FUNCTION
+    $('#stockClose').on('click', function(){
+
+    // reset function
+    reset();
+
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Close)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.close,
+            month.feb2017.close,
+            month.mar2017.close,
+            month.apr2017.close,
+            month.may2017.close,
+            month.june2017.close,
+            month.july2017.close,
+            month.aug2017.close,
+            month.sept2017.close,
+            month.oct2017.close,
+            month.nov2017.close,
+            month.dec2017.close 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+    // END OF STOCKCLOSE ONCLICK FUNCTION
+
+    // START OF STOCKVOLUME ONCLCIK FUNCTION
+    $('#stockVolume').on('click', function(){
+
+      // reset function
+      reset();
+
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Volume)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.volume,
+            month.feb2017.volume,
+            month.mar2017.volume,
+            month.apr2017.volume,
+            month.may2017.volume,
+            month.june2017.volume,
+            month.july2017.volume,
+            month.aug2017.volume,
+            month.sept2017.volume,
+            month.oct2017.volume,
+            month.nov2017.volume,
+            month.dec2017.volume 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+    // END OF STOCKVOLUME ONCLICK FUNCTION
+
+    // START OF STOCKHIGH ONCLCIK FUNCTION
+    $('#stockHigh').on('click', function(){
+
+      // reset function
+      reset();
+
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (High)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.high,
+            month.feb2017.high,
+            month.mar2017.high,
+            month.apr2017.high,
+            month.may2017.high,
+            month.june2017.high,
+            month.july2017.high,
+            month.aug2017.high,
+            month.sept2017.high,
+            month.oct2017.high,
+            month.nov2017.high,
+            month.dec2017.high 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+    // END OF STOCKHIGH ONCLICK FUNCTION
+
+    // START OF STOCKADJUSTEDCLOSE ONCLCIK FUNCTION
+    $('#stockAdjustClose').on('click', function(){
+
+      // reset function
+      reset();
+
+    // change the chart title
+    $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Adjust Close)");
+
+    let myChart = $('#searchChart');
+    let lineChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [{
+          label: "Price Snapshot",
+
+          data:[
+            month.jan2017.adjustedClose,
+            month.feb2017.adjustedClose,
+            month.mar2017.adjustedClose,
+            month.apr2017.adjustedClose,
+            month.may2017.adjustedClose,
+            month.june2017.adjustedClose,
+            month.july2017.adjustedClose,
+            month.aug2017.adjustedClose,
+            month.sept2017.adjustedClose,
+            month.oct2017.adjustedClose,
+            month.nov2017.adjustedClose,
+            month.dec2017.adjustedClose 
+          ],
+
+          backgroundColor:[
+            '#563f46',
+            '#9fa9a3',
+            '#484f4f',
+            '#454140',
+            '#b2c2bf',
+            '#c0ded9',
+            '#3b3a30',
+            '#e4d1d1',
+            '#b9b0b0',
+            '#7a3b2e',
+            '#77a8a8',
+            '#618685',
+            ]
+        }]
+      }
+    });
+    });
+    // END OF STOCKADJUSTEDCLOSE ONCLICK FUNCTION
+
+  });
+});
+
+  
+    
+  
+     
+      
+      
+
+    
+
+      
+
+
+
+    
+      
     
 
 
 
-    // display onclick display charts
-    $('#inputStockSearch').css("display", "block");
-  });
+
+    // display charts above to the HTML
+
+
+
 //bitcoin widget
-(function(b,i,t,C,O,I,N) {
-    window.addEventListener('load',function() {
-      if(b.getElementById(C))return;
-      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-    },false)
-  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
-  $('#stockSubmit').on("click", function(){
-var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
-var userStockSearch = $("#userStockSearch").val().trim();
-var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
-    console.log(userStockSearch);
-     $.ajax({ 
-        url: alphavantagesearchURL,
-        method: "GET"
-    }).done(function(response){
-      console.log(response);
-    });
-    var searchedStocks = $('<div>');
-  });
+// (function(b,i,t,C,O,I,N) {
+//     window.addEventListener('load',function() {
+//       if(b.getElementById(C))return;
+//       I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+//       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+//     },false)
+//   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+  
+
+
+//   $('#stockSubmit').on("click", function(){
+// var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+// var userStockSearch = $("#userStockSearch").val().trim();
+// var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
+//     console.log(userStockSearch);
+//      $.ajax({ 
+//         url: alphavantagesearchURL,
+//         method: "GET"
+//     }).done(function(response){
+//       console.log(response);
+//     });
+//     var searchedStocks = $('<div>');
+//   });
