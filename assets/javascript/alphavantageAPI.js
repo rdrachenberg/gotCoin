@@ -1,6 +1,6 @@
 
 // create an array that holds stocks to display in the six stock box cards automatically.
-var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA"];
+/*var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA"];
 
 
 // if user searches then remove the #5 in the array and add user input into #0 in the array
@@ -20,7 +20,7 @@ $("#goButton").on('click', function(){
       })
 
 	
-	.done(function(response) {
+	.done(function(response)){
 
 		console.log(response);
 		// gettin user input
@@ -66,12 +66,12 @@ $("#goButton").on('click', function(){
 
 // 			$('.stockCards').append(newDiv);
 // >>>>>>> master
-		}
+		});
 
 
 		// $('.card-body').text(newDiv);
 	
 	});
 	
-});
+};
 

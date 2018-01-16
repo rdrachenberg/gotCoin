@@ -1,4 +1,4 @@
-// // Initialize Firebase
+/*// // Initialize Firebase
 //   var config = {
 //     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
 //     authDomain: "gotcoin-db44a.firebaseapp.com",
@@ -302,3 +302,4 @@ $("#goButton").on('click', function(){
     });
 });
 
+*/
