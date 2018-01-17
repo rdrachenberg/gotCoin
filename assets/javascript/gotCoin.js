@@ -273,8 +273,11 @@ $('#stockSubmit').on("click", function(event){
   }).done(function(response){
 
     console.log(response);
-
-    var symbol = response["Meta Data"]["2. Symbol"];
+    
+    if (response == response["Error Message"]){
+      console.log("MODAL")
+    } else{
+      var symbol = response["Meta Data"]["2. Symbol"];
     console.log("THIS IS SYMBOL RESPONSE", symbol);
     // Title when user first loads
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (High)");
@@ -783,11 +786,12 @@ $('#stockSubmit').on("click", function(event){
     });
     });
     // END OF STOCKADJUSTEDCLOSE ONCLICK FUNCTION
-
+    }
+    
   });
 });
 
-bitcoin widget
+// bitcoin widget
 (function(b,i,t,C,O,I,N) {
     window.addEventListener('load',function() {
       if(b.getElementById(C))return;

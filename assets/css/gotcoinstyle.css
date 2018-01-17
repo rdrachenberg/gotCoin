@@ -125,3 +125,6 @@ button{
     margin: 7px;
     text-align: center;
 }
+.alertStock{
+    display: none;
+}

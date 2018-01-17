@@ -260,6 +260,34 @@
         </div>
     </div>
 <!-- Stock Market Section -->
+
+  <table>
+     <h4>Stock Search Results</h4>
+     <table class="table table-striped table-bordered table-hover" id="stkData">
+       <thead>
+         <tr>
+           <th><h3>SYMBOL</h3></th>
+           <th><h3>OPEN</h3></th>
+           <th><h3>HIGH</h3></th>
+           <th><h3>LOW</h3></th>
+           <th><h3>CLOSE</h3></th>
+           <th><h3>VOLUME</h3></th>
+        </tr>
+         </tr>
+         <tr>
+           <tr>
+             <td id="symbol"></td>
+             <td id="open"></td>
+             <td id="high"></td>
+             <td id="low"></td>
+             <td id="close"></td>
+             <td id="volume"></td>
+           </tr>
+         </tr>
+       </thead>
+     </table>
+   </table>
+
    <div class = "row">
 <div class = "container">
   <div class="col-lg-12 hoverable" id = "stockCard">
@@ -302,6 +330,8 @@
   </div>
 </div>
 </div>
+
+<button type="button" class="btn btn-primary alertStock" data-toggle="modal" data-target=".bd-example-modal-sm">Not a valid stock ticker!!! Please search again...</button>
 
 <footer class="navbar navbar-static-bottom z-depth-2">
   <div class="container">
