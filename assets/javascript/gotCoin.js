@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
@@ -10,14 +9,12 @@
     messagingSenderId: "492118808139"
   };
   firebase.initializeApp(config);
->>>>>>> master
+
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
 var apiKey = "MWAieJmDyYfwCYYC";
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
-<<<<<<< HEAD
-=======
 
 var timeStamp = moment().format("YYYY-MM-DD");
 
@@ -36,7 +33,7 @@ var tokenRequest = "https://coinbase.com/api/v1/";
 var aBearer = 'abd90df5f27a7b170cd775abf89d632b350b7c1c9d53e08b340cd9832ce52c2c'
 
 // header information to include before doing coinbase ajax request
->>>>>>> master
+
 var addApiKeyHeader = function( xhr ) {
       xhr.setRequestHeader('CB-ACCESS-KEY', apiKey),
       xhr.setRequestHeader('CB-ACCESS-SIGN', ('apiSecret + timeStamp + moment() + cbValidateURL'),
@@ -54,13 +51,7 @@ var addApiKeyHeaders = function( xhr ) {
       xhr.setRequestHeader('CB-VERSION', cbVersion),
       xhr.setRequestHeader('Authorization', aBearer))
     };
-<<<<<<< HEAD
-  
-=======
-// end header information in coinbase ajax request     
 
-
->>>>>>> master
     // CoinBase AJAX request
     $.ajax({
         url: queryURL, 
@@ -115,7 +106,6 @@ var addApiKeyHeaders = function( xhr ) {
   });
 });
 // End CoinBase API Call
-<<<<<<< HEAD
 // Initialize Firebase
  var config = {
     apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
@@ -129,7 +119,6 @@ var addApiKeyHeaders = function( xhr ) {
 var database = firebase.database();
 $('#buttonsend').on("click", function(event){
   event.preventDefault(event)
-=======
 
 
 // function to create a pop up wwhen the get coin button is pushed
@@ -152,7 +141,6 @@ $(function() {
 $('#buttonsend').on("click", function(event){
   event.preventDefault();
 
->>>>>>> master
     var yourName = $('#form3').val().trim();
     var yourEmail = $('#form2').val().trim();
     var subject = $('#form32').val().trim();

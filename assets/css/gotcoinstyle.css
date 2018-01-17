@@ -75,14 +75,9 @@ img{
     padding: 10%;
     text-align: center;
 }
-<<<<<<< HEAD
-h4{
-    font-weight: bold;
-=======
 
-h4 { 
-	font-weight: bold;
->>>>>>> master
+h4 {
+    font-weight: bold;
 }
 
 #bitcoin{
@@ -104,7 +99,6 @@ h4 {
     text-align: center;
 }
 #liteCoin{
-<<<<<<< HEAD
     font-size: 18px;
     font-weight: bold;
     text-decoration: underline;
@@ -135,12 +129,6 @@ button{
 }
 .alertStock{
     display: none;
-}
-=======
-	font-size: 18px;
-	font-weight: bold;
-	text-decoration: underline;
-	text-align: center;
 }
 
 
@@ -204,5 +192,3 @@ button{
     background:rgba(0,0,0,1);
     text-decoration:none;
 } /*end popup css--------------------*/
-
->>>>>>> master
