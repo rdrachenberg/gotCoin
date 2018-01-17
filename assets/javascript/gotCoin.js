@@ -175,6 +175,7 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
+<<<<<<< HEAD
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
@@ -546,7 +547,6 @@ $('#stockSubmit').on("click", function(event){
 
 
 
-
 // Onclick function to display chart Data of search stock
 
 
@@ -901,6 +901,7 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     var searchedStocks = $('<div>');
   });
 });
+
   //bitcoin widget
 
 (function(b,i,t,C,O,I,N) {
@@ -910,3 +911,4 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+
