@@ -9,8 +9,35 @@
     messagingSenderId: "399925748197"
   };
   firebase.initializeApp(config);
-var database = firebase.database();
+var dataBase = firebase.database();
+$("#stockSubmit").on("click", function(event) {
+   event.preventDefault();
 
+   var queryURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&interval=1min&apikey=3ZIHGQKVNFF4IYF5&symbol=";
+    console.log(queryURL);
+
+   var searchTerm = $("#userStockSearch").val().trim();
+   var todayDate = moment().format("YYYY-MM-DD");
+   console.log(todayDate);
+$.ajax({
+       url: queryURL + searchTerm
+     }).done(function(data) {
+       $("#symbol").text(data["Meta Data"]["2. Symbol"]);
+       $("#open" ).text(data["Time Series (Daily)"][todayDate]["1. open"]);
+       $("#high" ).text(data["Time Series (Daily)"][todayDate]["2. high"]);
+       $("#low").text(data["Time Series (Daily)"][todayDate]["3. low"]);
+       $("#close").text(data["Time Series (Daily)"][todayDate]["4. close"]);
+       $("#volume").text(data["Time Series (Daily)"][todayDate]["5. volume"]);
+       console.log(data);
+
+       console.log(data["Meta Data"]["2. Symbol"]);
+       console.log(data["Time Series (Daily)"][todayDate]);
+       console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
+
+     });
+
+
+});
 
 
 function cryptoTicker(){
@@ -41,7 +68,9 @@ setInterval(cryptoTicker, 10000);
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+
 var apiKey = "MWAieJmDyYfwCYYC";
+
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
 
 var timeStamp = moment().format("YYYY-MM-DD");
@@ -139,25 +168,8 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
-$('#buttonsend').on("click", function(event){})
+
  
-// function to create a pop up wwhen the get coin button is pushed
-$(function() {
-    //----- OPEN
-    $('[data-popup-open]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-open');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
-        e.preventDefault();
-    });
-
-    //----- CLOSE
-    $('[data-popup-close]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-close');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
-        e.preventDefault();
-    });
-});
-
 $('#buttonsend').on("click", function(event){
 
   event.preventDefault();
@@ -175,6 +187,7 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
+
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
