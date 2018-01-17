@@ -25,6 +25,8 @@
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- chartJS cdn -->
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/af.js"></script>
   
   <!-- Link to CSS File -->
     <link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
@@ -206,33 +208,7 @@
   </div>
   </div>
 </div>
-<!-- TradingView Widget BEGIN -->
-<!-- <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
-  "symbols": [
-    {
-      "proName": "INDEX:SPX",
-      "title": "S&P 500"
-    },
-    {
-      "proName": "INDEX:IUXX",
-      "title": "Nasdaq 100"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR/USD"
-    },
-    {
-      "proName": "NYMEX:CL1!",
-      "title": "Crude Oil"
-    },
-    {
-      "proName": "FX_IDC:XAUUSD",
-      "title": "Gold"
-    }
-  ],
-  "locale": "en"
-}</script> -->
-<!-- TradingView Widget END -->
+
 </div>
 <!-- Heading -->
 <div class = "container">
@@ -335,8 +311,9 @@
    </table>
   </div>
 </div>
-  
-<!-- Search Chart -->
+
+  <!-- Search Chart -->
+
 <div class = "row">
 <div class = "container" id = "inputStockSearch">
   <div class="col-lg-12 hoverable" id = "stockCard">
@@ -369,6 +346,7 @@
 </div>
 </div>
 
+
    <div class = "row">
 <div class = "container">
   <div class="col-lg-12 hoverable" id = "stockCard">
@@ -376,6 +354,7 @@
       <div class = "card-body">
         <canvas id="myChart"></canvas>
       </div>
+
     </div>
   </div>
 </div>

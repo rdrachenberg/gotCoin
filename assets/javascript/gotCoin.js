@@ -35,7 +35,7 @@ var addApiKeyHeader = function( xhr ) {
         $("#lc").html("LiteCoin:  " + response.data["3"].amount);
 });
 };
-setInterval(cryptoTicker, 1000);
+setInterval(cryptoTicker, 10000);
 
 
 
@@ -546,7 +546,6 @@ $('#stockSubmit').on("click", function(event){
 
 
 
-
 // Onclick function to display chart Data of search stock
 
 
@@ -836,7 +835,8 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
   });
 });
 
-//bitcoin widget
+
+  //bitcoin widget
 
 (function(b,i,t,C,O,I,N) {
     window.addEventListener('load',function() {
@@ -845,3 +845,4 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+
