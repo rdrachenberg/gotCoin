@@ -1,8 +1,23 @@
+ $(document).ready( function(){
+   // Initialize firbase
+ var config = {
+    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
+    authDomain: "gotcoin-657c2.firebaseapp.com",
+    databaseURL: "https://gotcoin-657c2.firebaseio.com",
+    projectId: "gotcoin-657c2",
+    storageBucket: "gotcoin-657c2.appspot.com",
+    messagingSenderId: "399925748197"
+  };
+  firebase.initializeApp(config);
+var database = firebase.database();
+
+
 
 function cryptoTicker(){
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
 var apiKey = "MWAieJmDyYfwCYYC";
+
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
 var addApiKeyHeader = function( xhr ) {
       xhr.setRequestHeader('Api-Key', apiKey)
@@ -46,6 +61,7 @@ var tokenRequest = "https://coinbase.com/api/v1/";
 var aBearer = 'abd90df5f27a7b170cd775abf89d632b350b7c1c9d53e08b340cd9832ce52c2c'
 
 // header information to include before doing coinbase ajax request
+
 var addApiKeyHeader = function( xhr ) {
       xhr.setRequestHeader('CB-ACCESS-KEY', apiKey),
       xhr.setRequestHeader('CB-ACCESS-SIGN', ('apiSecret + timeStamp + moment() + cbValidateURL'),
@@ -122,19 +138,9 @@ var addApiKeyHeaders = function( xhr ) {
   });
 });
 // End CoinBase API Call
-// Initialize Firebase
- var config = {
-    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
-    authDomain: "gotcoin-657c2.firebaseapp.com",
-    databaseURL: "https://gotcoin-657c2.firebaseio.com",
-    projectId: "gotcoin-657c2",
-    storageBucket: "gotcoin-657c2.appspot.com",
-    messagingSenderId: "399925748197"
-  };
-  firebase.initializeApp(config);
-var database = firebase.database();
 
-
+$('#buttonsend').on("click", function(event){})
+ 
 // function to create a pop up wwhen the get coin button is pushed
 $(function() {
     //----- OPEN
@@ -333,7 +339,14 @@ function clearHtml() {
      $("#searchChart").remove();
 };
 
-// Onclick function to display chart Data of search stock
+// method function to replace previous chart
+function newChartAppend() {
+    var newCanvas = $('<canvas>');
+    newCanvas.attr('id', 'searchChart');
+    $('.newChartAppend').append(newCanvas);
+};
+
+// // Onclick function to display chart Data of search stock
 $('#stockSubmit').on("click", function(event){
 
   // url var to call from AJX
@@ -349,8 +362,11 @@ $('#stockSubmit').on("click", function(event){
   }).done(function(response){
 
     console.log(response);
-
-    var symbol = response["Meta Data"]["2. Symbol"];
+    
+    if (response == response["Error Message"]){
+      console.log("MODAL")
+    } else{}
+      var symbol = response["Meta Data"]["2. Symbol"];
     console.log("THIS IS SYMBOL RESPONSE", symbol);
     // Title when user first loads
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (High)");
@@ -496,7 +512,7 @@ $('#stockSubmit').on("click", function(event){
   // graph to display on HTML
   let myChart = $('#searchChart');
   let lineChart = new Chart(myChart, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       datasets: [{
@@ -518,20 +534,9 @@ $('#stockSubmit').on("click", function(event){
         ],
 
         backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+          "#FC2E1A",
             ]
-      }]
+      }],
     }
   });
 // END OF GRAPH
@@ -539,18 +544,29 @@ $('#stockSubmit').on("click", function(event){
   // displaying the graph on click
   $('#inputStockSearch').css("display", "block");
 
+
+
+
+// Onclick function to display chart Data of search stock
+
+
   // START OF STOCK LOW ONCLICK
   $('#stockLow').on('click', function(){
 
     // clear function
     clearHtml();
+
+    // appending new chart
+    newChartAppend();
     
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Low)");
 
+
+
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -597,12 +613,15 @@ $('#stockSubmit').on("click", function(event){
     // clear function
     clearHtml();
 
+    // appending new chart
+    newChartAppend();
+
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Open)");
 
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -649,12 +668,15 @@ $('#stockSubmit').on("click", function(event){
     // clear function
     clearHtml();
 
+    // appending new chart
+    newChartAppend();
+
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Close)");
 
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -701,12 +723,15 @@ $('#stockSubmit').on("click", function(event){
       // clear function
       clearHtml();
 
+      // appending new chart
+      newChartAppend();
+
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Volume)");
 
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -753,12 +778,15 @@ $('#stockSubmit').on("click", function(event){
       // clear function
       clearHtml();
 
+      // appending new chart
+      newChartAppend();
+
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (High)");
 
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -805,12 +833,15 @@ $('#stockSubmit').on("click", function(event){
       // clear function
       clearHtml();
 
+      // appending new chart
+      newChartAppend();
+
     // change the chart title
     $('#stockSymbol').text(symbol + " 2017 Monthly Stock Information (Adjust Close)");
 
     let myChart = $('#searchChart');
     let lineChart = new Chart(myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -850,7 +881,7 @@ $('#stockSubmit').on("click", function(event){
     });
     });
     // END OF STOCKADJUSTEDCLOSE ONCLICK FUNCTION
-
+    
   });
 });
 
@@ -863,26 +894,19 @@ $('#stockSubmit').on("click", function(event){
       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
-
-//Code linked to firebase
-$('#buttonsend').on("click", function(event){
-  event.preventDefault(event)
-
-    var yourName = $('#form3').val().trim();
-    var yourEmail = $('#form2').val().trim();
-    var subject = $('#form32').val().trim();
-    var yourMessage = $('#form8').val().trim();
-    
-    var loginData={
-      yourName: yourName,
-      yourEmail: yourEmail,
-      subject: subject,
-      yourMessage: yourMessage
-    }
-    database.ref().push(loginData)
-    console.log(loginData.yourName)
-    console.log(loginData.yourEmail)
-    console.log(loginData.subject)
-    console.log(loginData.yourMessage)
-  })
-
+  
+  $('#stockSubmit').on("click", function(){
+var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
+var userStockSearch = $("#userStockSearch").val().trim();
+var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
+    console.log(userStockSearch);
+     $.ajax({ 
+        url: alphavantagesearchURL,
+        method: "GET"
+    }).done(function(response){
+      console.log(response);
+    });
+    var searchedStocks = $('<div>');
+  });
+});
+  
