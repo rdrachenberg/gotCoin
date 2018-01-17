@@ -9,7 +9,6 @@
     messagingSenderId: "399925748197"
   };
   firebase.initializeApp(config);
-var database = firebase.database();
 var dataBase = firebase.database();
 $("#stockSubmit").on("click", function(event) {
    event.preventDefault();
@@ -41,7 +40,6 @@ $.ajax({
 });
 
 
-
 function cryptoTicker(){
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -70,7 +68,9 @@ setInterval(cryptoTicker, 10000);
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+
 var apiKey = "MWAieJmDyYfwCYYC";
+
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
 
 var timeStamp = moment().format("YYYY-MM-DD");
@@ -170,23 +170,6 @@ var addApiKeyHeaders = function( xhr ) {
 
 $('#buttonsend').on("click", function(event){})
  
-// function to create a pop up wwhen the get coin button is pushed
-$(function() {
-    //----- OPEN
-    $('[data-popup-open]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-open');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
-        e.preventDefault();
-    });
-
-    //----- CLOSE
-    $('[data-popup-close]').on('click', function(e)  {
-        var targeted_popup_class = jQuery(this).attr('data-popup-close');
-        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
-        e.preventDefault();
-    });
-});
-
 $('#buttonsend').on("click", function(event){
 
   event.preventDefault();
@@ -204,6 +187,10 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
