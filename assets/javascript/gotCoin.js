@@ -1,14 +1,14 @@
-
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
-    authDomain: "gotcoin-db44a.firebaseapp.com",
-    databaseURL: "https://gotcoin-db44a.firebaseio.com",
-    projectId: "gotcoin-db44a",
-    storageBucket: "",
-    messagingSenderId: "492118808139"
+ // Initialize firbase
+ var config = {
+    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
+    authDomain: "gotcoin-657c2.firebaseapp.com",
+    databaseURL: "https://gotcoin-657c2.firebaseio.com",
+    projectId: "gotcoin-657c2",
+    storageBucket: "gotcoin-657c2.appspot.com",
+    messagingSenderId: "399925748197"
   };
   firebase.initializeApp(config);
+var database = firebase.database();
 
 
 // CoinBase vars and API Call
@@ -106,21 +106,9 @@ var addApiKeyHeaders = function( xhr ) {
   });
 });
 // End CoinBase API Call
-// Initialize Firebase
- var config = {
-    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
-    authDomain: "gotcoin-657c2.firebaseapp.com",
-    databaseURL: "https://gotcoin-657c2.firebaseio.com",
-    projectId: "gotcoin-657c2",
-    storageBucket: "gotcoin-657c2.appspot.com",
-    messagingSenderId: "399925748197"
-  };
-  firebase.initializeApp(config);
-var database = firebase.database();
-$('#buttonsend').on("click", function(event){
-  event.preventDefault(event)
 
-
+$('#buttonsend').on("click", function(event){})
+ 
 // function to create a pop up wwhen the get coin button is pushed
 $(function() {
     //----- OPEN
@@ -324,7 +312,7 @@ function newChartAppend() {
     $('.newChartAppend').append(newCanvas);
 };
 
-// Onclick function to display chart Data of search stock
+// // Onclick function to display chart Data of search stock
 $('#stockSubmit').on("click", function(event){
 
   // url var to call from AJX
@@ -343,7 +331,7 @@ $('#stockSubmit').on("click", function(event){
     
     if (response == response["Error Message"]){
       console.log("MODAL")
-    } else{
+    } else{}
       var symbol = response["Meta Data"]["2. Symbol"];
     console.log("THIS IS SYMBOL RESPONSE", symbol);
     // Title when user first loads
@@ -853,12 +841,11 @@ $('#stockSubmit').on("click", function(event){
     });
     });
     // END OF STOCKADJUSTEDCLOSE ONCLICK FUNCTION
-    }
     
   });
 });
 
-// bitcoin widget
+//bitcoin widget
 (function(b,i,t,C,O,I,N) {
     window.addEventListener('load',function() {
       if(b.getElementById(C))return;
@@ -867,8 +854,6 @@ $('#stockSubmit').on("click", function(event){
     },false)
   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
   
-
-
   $('#stockSubmit').on("click", function(){
 var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
 var userStockSearch = $("#userStockSearch").val().trim();
