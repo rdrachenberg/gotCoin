@@ -12,7 +12,7 @@ a, .navbar-brand{
 }
 
 .cryptoCards{
-	background: #c0dfd9;
+	background: #e9ece5;
 	border-radius: 1em;
 	margin: 4.1%;
 	padding: 1%;
@@ -110,6 +110,34 @@ h4 {
 	text-align: center;
 }
 
+#stockCard{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-right: 20%;
+}
+#myCryptoChart{
+		width: 100%;
+}
+
+button{
+	background: black;
+}
+#inputStockSearch{
+	display: none;
+}
+
+.ticker{
+ background: #b3c2bf;
+ border: 1px solid black;
+ font-size: 18px;
+ font-weight: bold;
+ color: white;
+ text-align: center;
+ padding: 20px;
+ margin: 5px;
+ width: 282px;
+ border-radius: 5px;
+}
 
 /*handles when a user clicks to open coinbase account with a popup*/
 .btn {
@@ -180,4 +208,5 @@ h4 {
     background:rgba(0,0,0,1);
     text-decoration:none;
 } /*end popup css--------------------*/
+
 

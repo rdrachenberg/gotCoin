@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>gotCoin?</title>
-	<meta charset="utf-8">
-	<!-- Bootstrap link -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- MD Bootstrap -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
-	<!-- Google Fonts API -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-	<!-- jQuery Link -->
-
+  <title>gotCoin?</title>
+  <meta charset="utf-8">
+  <!-- Bootstrap link -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- MD Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
+  
+  <!-- Google Fonts API -->
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+  
+  <!-- jQuery Link -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
   <!-- Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   
@@ -24,22 +27,12 @@
   <!-- chartJS cdn -->
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
   
-
-	<!-- Compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
-	<!-- Google Fonts API -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-	<!-- jQuery Link -->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- moment.js Time script -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
   <!-- Link to CSS File -->
-	<link rel="stylesheet" type="text/css" href="assets/css/gotCoinStyle.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
 </head>
 <body>
-	<!-- Navbar Section -->
-	<nav class="navbar navbar-static-top z-depth-2">
+  <!-- Navbar Section with md-->
+  <nav class="navbar navbar-static-top z-depth-2">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -49,6 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
       <a class="navbar-brand" id="gotCoin" href="https://www.coinbase.com/oauth/authorize?client_id=ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https%3A%2F%2Frdrachenberg.github.io%2FgotCoin%2F&response_type=code&scope=wallet%3Auser%3Aread" lang="el">got Coin?</a>
       <a class="btn" data-popup-open="popup-1">get Coin</a>
 
@@ -65,18 +59,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myAboutUsModal">About Us</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Resources</button>
+        </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myLoginModal">Login/SignUp</button>
+        </li>
       </ul>
+
     </div><!-- end of collapse -->
   </div><!-- end of container -->
 </nav> <!-- end of Navbar section -->
-  
+
 <!-- About Us Modal -->
 <div id="myAboutUsModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -111,11 +108,9 @@
     </div>
   </div>
 </div>
-
 <!-- Resources ModalModal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -145,50 +140,41 @@
     </div>
   </div>
 </div>
-
 <!-- Login ModalModal -->
 <div id="myLoginModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
+    <div class="modal-body">
     <!-- Form contact -->
 <form>
-
     <p class="h5 text-center mb-4">Write to us</p>
-
     <div class="md-form">
         <i class="fa fa-user prefix grey-text"></i>
         <input type="text" id="form3" class="form-control">
         <label for="form3">Your name</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>
         <input type="text" id="form2" class="form-control">
         <label for="form2">Your email</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-tag prefix grey-text"></i>
         <input type="text" id="form32" class="form-control">
         <label for="form34">Subject</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-pencil prefix grey-text"></i>
         <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
         <label for="form8">Your message</label>
     </div>
-
     <div class="text-center">
-        <button class="btn btn-unique" id="buttonsend">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+        <button class="btn" id="buttonsend">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
     </div>
-
 </form>
 <!-- Form contact -->
         
@@ -200,8 +186,26 @@
   </div>
 </div>
 
-  <!-- TradingView Widget BEGIN -->
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+<div id = "ticker">
+  <div class = "container">
+  <div class ="row">
+    <div class = "col-md-3 ticker" id = "btc">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "bcc">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "eth">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "lc">
+    
+    </div>
+  </div>
+  </div>
+</div>
+<!-- TradingView Widget BEGIN -->
+<!-- <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
   "symbols": [
     {
       "proName": "INDEX:SPX",
@@ -225,23 +229,25 @@
     }
   ],
   "locale": "en"
-}</script>
+}</script> -->
 <!-- TradingView Widget END -->
 </div>
-
 <!-- Heading -->
 <div class = "container">
+
 	<h1 id="crypto">
     <a href="https://www.coinbase.com/join/5a5567cf82832f03e5a097e1">Cryptocurrency</a>
   </h1>
 </div>
 
-	<!-- BitCoin Section -->
+
+</div>
+    <!-- BitCoin Section -->
 <div class = "container-fluid">
-	
-	<section class = "bitcoinSection">
-	<div class = "row">
-		 <div class="col-sm-5 cryptoCards z-depth-2">
+    
+    <section class = "bitcoinSection">
+    <div class = "row">
+         <div class="col-sm-5 cryptoCards hoverable">
     <div class="card">
       <!-- <div class="card-body"> -->
         <h4 class="card-title" id="bitcoin">Bitcoin</h4>
@@ -249,7 +255,7 @@
       <!-- </div> -->
     </div>
   </div>
-  <div class="col-sm-5 cryptoCards z-depth-2">
+  <div class="col-sm-5 cryptoCards hoverable">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title" id="bitcoinCash">Bitcoin Cash</h4>
@@ -257,161 +263,98 @@
       </div>
     </div>
   </div>
-	</div>
-	<div class = "row">
-		 <div class="col-sm-5 cryptoCards z-depth-2">
+    </div>
+<div class = "row">
+  <div class ="container">
+  <div class="col-lg-12 hoverable">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title" id="ethereum">Ethereum</h4>
-
+        <canvas id="myCryptoChart"></canvas>
       </div>
     </div>
   </div>
-  <div class="col-sm-5 cryptoCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title" id="liteCoin">LiteCoin</h4>
-      </div>
-    </div>
   </div>
-	</div>
-	</section>
-</div>	
-
-<!-- Heading -->
+  </section>
+</div>
+<!-- Stocks Heading -->
 <div class = "container">
-	<div class = "row">
-		<div class = col-sm-6>
-			<h1>Stocks</h1>
-		</div>
-	</div>
-	<div class = "row">
-			<div class="col-sm-6">
-    		<div class="input-group-lg">
-      		<input type="text" class="form-control" id="userInput" placeholder="Search for your stock">
-      			<span class="input-group-btn">
 
-        			<button class="btn btn-default stockSearch" type="submit">Go!</button>
-
-        			<button class="btn btn-default stockSearch" id="goButton" type="submit">Go!</button>
-
-      			</span>
-    		</div><!-- /input-group -->
-  		</div><!-- /.col-sm-6 -->
-		</div>
-	</div>
-
-	<!-- Stock Market Section -->
-
-	<div class = "container-fluid">
-	
-	<section>
-	<div class = "row">
-
-		<div class="col-sm-3 stockCards z-depth-2">
-      <div class="card">
-        <canvas id="myChart" width="500" height="500"></canvas>
-      </div>
-    </div>
-  <div class="col-sm-3 stockCards z-depth-2">
-    <div class="card">
-      <div class="card-body">
-        <canvas id="myChart2" width="500" height="500"></canvas>
-
-		 <div class="col-sm-3 z-depth-2">
-    <div class="card">
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 1</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 z-depth-2">
-    <div class="card">
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 2</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 z-depth-2">
-    <div class="card">
-
-      <div class="card-body">
-        <canvas id="myChart3" width="500" height="500"></canvas>
-
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 3</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-      </div>
-    </div>
-  </div>
-	</div>
-	<div class = "row">
-		<div class="col-sm-3 z-depth-2">
-    	<div class="card">
-
-        <div class="card-body">
-          <canvas id="myChart4" width="500" height="500"></canvas>
+    <div class = "row">
+        <div class = col-sm-6>
+            <h1>Stocks</h1>
         </div>
+    </div>
+    <div class = "row">
+            <div class="col-sm-6">
+            <div class="input-group-lg">
+            <input type="text" class="form-control" placeholder="Search for your stock" id = "userStockSearch">
+                <span class="input-group-btn">
+                    <button class="btn btn-default stockSearch" type="submit" id = "stockSubmit">Go!</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-sm-6 -->
+      <div class="col-sm-6">
+        <div class = "inputStocks">
+          
+        </div><!-- /input-group -->
+      </div><!-- /.col-sm-6 -->
+        </div>
+    </div>
+<!-- Stock Market Section -->
+   <div class = "row">
+<div class = "container">
+  <div class="col-lg-12 hoverable" id = "stockCard">
+    <div class="card" >
+      <div class = "card-body">
+        <canvas id="myChart"></canvas>
       </div>
     </div>
-    <div class="col-sm-3 stockCards z-depth-2">
-      <div class="card">
-        <div class="card-body">
-          <canvas id="myChart5" width="500" height="500"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3 stockCards z-depth-2">
-      <div class="card">
-        <div class="card-body">
-          <canvas id="myChart6" width="500" height="500"></canvas>
-        </div>
+  </div>
+</div>
+</div>
+<!-- Search Chart -->
+<div class = "row">
+<div class = "container" id = "inputStockSearch">
+  <div class="col-lg-12 hoverable" id = "stockCard">
+    <div class="card" >
+      <div class = "card-body">
+        <h4 id = "stockSymbol"></h4>
+        <canvas id="searchChart"></canvas>
 
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 4</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
+      <div class="col-lg-2">
+        <button class="btn btn-danger stockInfoBtn hoverable" id = "stockLow">Low</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-default stockInfoBtn hoverable" id = "stockOpen">Open</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-danger stockInfoBtn hoverable" id = "stockClose">Close</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-warning stockInfoBtn hoverable" id = "stockVolume">Volume</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-success stockInfoBtn hoverable" id = "stockHigh">High</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-info stockInfoBtn hoverable" id = "stockAdjustClose">Adjusted Close</button>
+      </div>
   </div>
-  <div class="col-sm-3 z-depth-2">
-    <div class="card">
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 5</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 z-depth-2">
-    <div class="card">
-      <div class="card-body stockCards">
-        <a href="#"><img src=""></a>
-        <h4 class="card-title">Top Producing Stock 6</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-	</div>
-	</section>
-</div>	
+</div>
+</div>
+
 
 <footer class="navbar navbar-static-bottom z-depth-2">
   <div class="container">
     <p class = "footerContent">&#169 2018 alpha Coders</p>
   </div>
 </footer>
-
-<!-- chartJS cdn -->
+<!-- firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
-<script type="text/javascript" src="assets/javascript/alphavantageAPI.js"></script>
+<!-- js file -->
 <script type="text/javascript" src="assets/javascript/gotCoin.js"></script>
 </body>
 </html>
