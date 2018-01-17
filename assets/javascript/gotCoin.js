@@ -35,7 +35,7 @@ var addApiKeyHeader = function( xhr ) {
         $("#lc").html("LiteCoin:  " + response.data["3"].amount);
 });
 };
-setInterval(cryptoTicker, 1000);
+setInterval(cryptoTicker, 10000);
 
 
 
@@ -885,15 +885,7 @@ $('#stockSubmit').on("click", function(event){
   });
 });
 
-//bitcoin widget
 
-(function(b,i,t,C,O,I,N) {
-    window.addEventListener('load',function() {
-      if(b.getElementById(C))return;
-      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-    },false)
-  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
   
   $('#stockSubmit').on("click", function(){
 var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
@@ -909,4 +901,14 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     var searchedStocks = $('<div>');
   });
 });
-  
+
+  //bitcoin widget
+
+(function(b,i,t,C,O,I,N) {
+    window.addEventListener('load',function() {
+      if(b.getElementById(C))return;
+      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+    },false)
+  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+
