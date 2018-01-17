@@ -107,28 +107,47 @@ $("#stockSubmit").on("click", function(event) {
      console.log(queryURL);
 
     var searchTerm = $("#userStockSearch").val().trim();
+    var todayDate = moment().format("YYYY-MM-DD");
+    console.log(todayDate);
 
+      // $.getJSON(
+      //     queryURL + searchTerm,
+      //       function( data ){
+      //       console.log(data);
+      //       var Metadata=data["Meta Data"];
+      //       var timeSeries=data["Time Series (Daily)"];
+      //       var lastTrade=timeSeries[timeSeries.length-1];
+      //       $("#symbol").text( Metadata["Symbol"] );
+      //       $("#previousClose" ).text( data.previousClose );
+      //       $("#open" ).text( data.open );
+      //       $("#lastTrade").text( data.lastTrade );
+      //       $("#lastTradeTime").text( data.lastTradeTime );
+      //       $("#change").text( data.change );
+      //       $("#daysLow").text( data.daysLow );
+      //       $("#daysHigh").text( data.daysHigh );
+      //       $("#volume").text( data.volume);
+      //       console.log(Metadata);
+      //       console.log (timeSeries);
+      //       console.log(lastTrade);
 
-      $.getJSON(
-          queryURL + searchTerm,
-            function( data ){
-            var Metadata=data["Meta Data"];
-            var timeSeries=data["Time Series (Daily)"];
-            var lastTrade=timeSeries[timeSeries.length-1];
-            $("#symbol").text( Metadata["Symbol"] );
-            $("#previousClose" ).text( data.previousClose );
-            $("#open" ).text( data.open );
-            $("#lastTrade").text( data.lastTrade );
-            $("#lastTradeTime").text( data.lastTradeTime );
-            $("#change").text( data.change );
-            $("#daysLow").text( data.daysLow );
-            $("#daysHigh").text( data.daysHigh );
-            $("#volume").text( data.volume);
-            console.log(Metadata);
-            console.log (timeSeries);
-            console.log(lastTrade);
+      // })
+      $.ajax({
+        url: queryURL + searchTerm
+      }).done(function(data) {
+        $("#symbol").text(data["Meta Data"]["2. Symbol"]);
+        $("#open" ).text(data["Time Series (Daily)"][todayDate]["1. open"]);
+        $("#high" ).text(data["Time Series (Daily)"][todayDate]["2. high"]);
+        $("#low").text(data["Time Series (Daily)"][todayDate]["3. low"]);
+        $("#close").text(data["Time Series (Daily)"][todayDate]["4. close"]);
+        $("#volume").text(data["Time Series (Daily)"][todayDate]["5. volume"]);
+        console.log(data);
+
+        console.log(data["Meta Data"]["2. Symbol"]);
+        console.log(data["Time Series (Daily)"][todayDate]);
+        console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
 
       })
+      database.ref().push()
 
 });
   
