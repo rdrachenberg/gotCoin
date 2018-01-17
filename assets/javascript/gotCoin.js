@@ -159,7 +159,7 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
-<<<<<<< HEAD
+
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
