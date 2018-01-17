@@ -1,4 +1,5 @@
- // Initialize firbase
+ $(document).ready( function(){
+   // Initialize firbase
  var config = {
     apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
     authDomain: "gotcoin-657c2.firebaseapp.com",
@@ -9,6 +10,33 @@
   };
   firebase.initializeApp(config);
 var database = firebase.database();
+
+
+
+function cryptoTicker(){
+// CoinBase vars and API Call
+var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+var apiKey = "MWAieJmDyYfwCYYC";
+
+var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
+var addApiKeyHeader = function( xhr ) {
+      xhr.setRequestHeader('Api-Key', apiKey)
+    };
+  
+    // CoinBase AJAX request
+    $.ajax({
+        url: queryURL,
+        beforeSend: addApiKeyHeader,
+        method: "GET"
+    }).done(function(response) {
+        $("#btc").html("Bitcoin Exchange Price:  " + response.data["0"].amount);
+        $("#bcc").html("Bitcoin Cash:  " + response.data["1"].amount);
+        $("#eth").html("Ethereum:  " + response.data["2"].amount);
+        $("#lc").html("LiteCoin:  " + response.data["3"].amount);
+});
+};
+setInterval(cryptoTicker, 1000);
+
 
 
 // CoinBase vars and API Call
@@ -51,6 +79,10 @@ var addApiKeyHeaders = function( xhr ) {
       xhr.setRequestHeader('CB-VERSION', cbVersion),
       xhr.setRequestHeader('Authorization', aBearer))
     };
+
+// end header information in coinbase ajax request     
+
+
 
     // CoinBase AJAX request
     $.ajax({
@@ -127,7 +159,9 @@ $(function() {
 });
 
 $('#buttonsend').on("click", function(event){
+
   event.preventDefault();
+
 
     var yourName = $('#form3').val().trim();
     var yourEmail = $('#form2').val().trim();
@@ -510,6 +544,12 @@ $('#stockSubmit').on("click", function(event){
   // displaying the graph on click
   $('#inputStockSearch').css("display", "block");
 
+
+
+
+// Onclick function to display chart Data of search stock
+
+
   // START OF STOCK LOW ONCLICK
   $('#stockLow').on('click', function(){
 
@@ -846,6 +886,7 @@ $('#stockSubmit').on("click", function(event){
 });
 
 //bitcoin widget
+
 (function(b,i,t,C,O,I,N) {
     window.addEventListener('load',function() {
       if(b.getElementById(C))return;
@@ -867,3 +908,5 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     });
     var searchedStocks = $('<div>');
   });
+});
+  
