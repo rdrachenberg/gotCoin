@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>gotCoin?</title>
-	<meta charset="utf-8">
-	<!-- Bootstrap link -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
+    <title>gotCoin?</title>
+    <meta charset="utf-8">
+    <!-- Bootstrap link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
   <!-- MD Bootstrap -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
-	
-	<!-- Google Fonts API -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-	
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.css" rel="stylesheet">
+    
+    <!-- Google Fonts API -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    
   <!-- jQuery Link -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
@@ -23,16 +23,15 @@
   
   <!-- Moment JS cdn -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
   <!-- chartJS cdn -->
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
   
   <!-- Link to CSS File -->
-	<link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/gotcoinstyle.css">
 </head>
 <body>
-	<!-- Navbar Section with md-->
-	<nav class="navbar navbar-static-top z-depth-2">
+    <!-- Navbar Section with md-->
+    <nav class="navbar navbar-static-top z-depth-2">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -54,15 +53,12 @@
         <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myLoginModal">Login/SignUp</button>
         </li>
       </ul>
-
     </div><!-- end of collapse -->
   </div><!-- end of container -->
 </nav> <!-- end of Navbar section -->
-
 <!-- About Us Modal -->
 <div id="myAboutUsModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -97,11 +93,9 @@
     </div>
   </div>
 </div>
-
 <!-- Resources ModalModal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -131,11 +125,9 @@
     </div>
   </div>
 </div>
-
 <!-- Login ModalModal -->
 <div id="myLoginModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -144,37 +136,30 @@
     <div class="modal-body">
     <!-- Form contact -->
 <form>
-
     <p class="h5 text-center mb-4">Write to us</p>
-
     <div class="md-form">
         <i class="fa fa-user prefix grey-text"></i>
         <input type="text" id="form3" class="form-control">
         <label for="form3">Your name</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>
         <input type="text" id="form2" class="form-control">
         <label for="form2">Your email</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-tag prefix grey-text"></i>
         <input type="text" id="form32" class="form-control">
         <label for="form34">Subject</label>
     </div>
-
     <div class="md-form">
         <i class="fa fa-pencil prefix grey-text"></i>
         <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
         <label for="form8">Your message</label>
     </div>
-
     <div class="text-center">
         <button class="btn" id="buttonsend">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
     </div>
-
 </form>
 <!-- Form contact -->
         
@@ -186,8 +171,26 @@
   </div>
 </div>
 
+<div id = "ticker">
+  <div class = "container">
+  <div class ="row">
+    <div class = "col-md-3 ticker" id = "btc">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "bcc">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "eth">
+    
+    </div>
+    <div class = "col-md-3 ticker" id = "lc">
+    
+    </div>
+  </div>
+  </div>
+</div>
 <!-- TradingView Widget BEGIN -->
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+<!-- <script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
   "symbols": [
     {
       "proName": "INDEX:SPX",
@@ -211,21 +214,19 @@
     }
   ],
   "locale": "en"
-}</script>
+}</script> -->
 <!-- TradingView Widget END -->
 </div>
-
 <!-- Heading -->
 <div class = "container">
-	<h1><a href="http://nakamotoinstitute.org/bitcoin/" target="_blank">Cryptocurrency</a></h1>
+    <h1><a href="http://nakamotoinstitute.org/bitcoin/" target="_blank">Cryptocurrency</a></h1>
 </div>
-
-	<!-- BitCoin Section -->
+    <!-- BitCoin Section -->
 <div class = "container-fluid">
-	
-	<section class = "bitcoinSection">
-	<div class = "row">
-		 <div class="col-sm-5 cryptoCards hoverable">
+    
+    <section class = "bitcoinSection">
+    <div class = "row">
+         <div class="col-sm-5 cryptoCards hoverable">
     <div class="card">
       <!-- <div class="card-body"> -->
         <h4 class="card-title" id="bitcoin">Bitcoin</h4>
@@ -241,7 +242,7 @@
       </div>
     </div>
   </div>
-	</div>
+    </div>
 <div class = "row">
   <div class ="container">
   <div class="col-lg-12 hoverable">
@@ -254,50 +255,69 @@
   </div>
   </section>
 </div>
-
-
 <!-- Stocks Heading -->
 <div class = "container">
-	<div class = "row">
-		<div class = col-sm-6>
-			<h1>Stocks</h1>
-		</div>
-	</div>
-	<div class = "row">
-			<div class="col-sm-6">
-    		<div class="input-group-lg">
-      		<input type="text" class="form-control" placeholder="Search for your stock" id = "userStockSearch">
-      			<span class="input-group-btn">
-        			<button class="btn btn-default stockSearch" type="submit" id = "stockSubmit">Go!</button>
-      			</span>
-    		</div><!-- /input-group -->
-  		</div><!-- /.col-sm-6 -->
-      
-		</div>
-	</div>
-  <!-- Search Chart -->
-<div class = "row">
-<div class = "container" id = "inputStockSearch">
+    <div class = "row">
+        <div class = col-sm-6>
+            <h1>Stocks</h1>
+        </div>
+    </div>
+    <div class = "row">
+            <div class="col-sm-6">
+            <div class="input-group-lg">
+            <input type="text" class="form-control" placeholder="Search for your stock" id = "userStockSearch">
+                <span class="input-group-btn">
+                    <button class="btn btn-default stockSearch" type="submit" id = "stockSubmit">Go!</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-sm-6 -->
+      <div class="col-sm-6">
+        <div class = "inputStocks">
+          
+        </div><!-- /input-group -->
+      </div><!-- /.col-sm-6 -->
+        </div>
+    </div>
+<!-- Stock Market Section -->
+   <div class = "row">
+<div class = "container">
   <div class="col-lg-12 hoverable" id = "stockCard">
     <div class="card" >
       <div class = "card-body">
-        <canvas id="searchChart"></canvas>
+        <canvas id="myChart"></canvas>
       </div>
     </div>
   </div>
 </div>
 </div>
-<!-- Stock Market Section -->
-   <div class = "row">
-
-<div class = "container">
+<!-- Search Chart -->
+<div class = "row">
+<div class = "container" id = "inputStockSearch">
   <div class="col-lg-12 hoverable" id = "stockCard">
     <div class="card" >
       <div class = "card-body">
-        <canvas id="myChart2"></canvas>
-        <canvas id="myChart"></canvas>
+        <h4 id = "stockSymbol"></h4>
+        <canvas id="searchChart"></canvas>
       </div>
     </div>
+      <div class="col-lg-2">
+        <button class="btn btn-danger stockInfoBtn hoverable" id = "stockLow">Low</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-default stockInfoBtn hoverable" id = "stockOpen">Open</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-danger stockInfoBtn hoverable" id = "stockClose">Close</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-warning stockInfoBtn hoverable" id = "stockVolume">Volume</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-success stockInfoBtn hoverable" id = "stockHigh">High</button>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-info stockInfoBtn hoverable" id = "stockAdjustClose">Adjusted Close</button>
+      </div>
   </div>
 </div>
 </div>
@@ -307,7 +327,6 @@
     <p class = "footerContent">&#169 2018 alpha Coders</p>
   </div>
 </footer>
-
 <!-- firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <!-- js file -->

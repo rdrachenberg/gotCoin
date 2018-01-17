@@ -123,3 +123,16 @@ button{
 #inputStockSearch{
 	display: none;
 }
+
+.ticker{
+ background: #b3c2bf;
+ border: 1px solid black;
+ font-size: 18px;
+ font-weight: bold;
+ color: white;
+ text-align: center;
+ padding: 20px;
+ margin: 5px;
+ width: 282px;
+ border-radius: 5px;
+}
