@@ -1,15 +1,69 @@
+<<<<<<< HEAD
+=======
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
+    authDomain: "gotcoin-db44a.firebaseapp.com",
+    databaseURL: "https://gotcoin-db44a.firebaseio.com",
+    projectId: "gotcoin-db44a",
+    storageBucket: "",
+    messagingSenderId: "492118808139"
+  };
+  firebase.initializeApp(config);
+>>>>>>> master
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
 var apiKey = "MWAieJmDyYfwCYYC";
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
+<<<<<<< HEAD
+=======
+
+var timeStamp = moment().format("YYYY-MM-DD");
+
+var clientId = "ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe"
+
+var gotCoin = $('#gotCoin').on('click');
+
+var cbValidateURL = "https://www.coinbase.com/oauth/authorize?response_type=code&client_id=(" + clientId + ")&redirect_uri=https://rdrachenberg.github.io/gotCoin/&state=SECURE_RANDOM&scope=wallet:accounts:read"
+
+var cbVersion = '2018-01-09'
+
+var oAuthURL = "//www.coinbase.com/oauth/authorize?ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https%3A%2F%2Fexample.com%2Foauth%2Fcallback&state=134ef5504a94&scope=wallet:user:read,wallet:accounts:read"
+
+var tokenRequest = "https://coinbase.com/api/v1/";
+
+var aBearer = 'abd90df5f27a7b170cd775abf89d632b350b7c1c9d53e08b340cd9832ce52c2c'
+
+// header information to include before doing coinbase ajax request
+>>>>>>> master
 var addApiKeyHeader = function( xhr ) {
-      xhr.setRequestHeader('Api-Key', apiKey)
+      xhr.setRequestHeader('CB-ACCESS-KEY', apiKey),
+      xhr.setRequestHeader('CB-ACCESS-SIGN', ('apiSecret + timeStamp + moment() + cbValidateURL'),
+      xhr.setRequestHeader('CB-ACCESS-TIMESTAMP', timeStamp),
+      xhr.setRequestHeader('client_id', clientId),
+      xhr.setRequestHeader('CB-VERSION', cbVersion),
+      xhr.setRequestHeader('Authorization', aBearer))
     };
+
+var addApiKeyHeaders = function( xhr ) {
+    xhr.setRequestHeader('CB-ACCESS-KEY', apiKey),
+      xhr.setRequestHeader('CB-ACCESS-SIGN', ('apiSecret + timeStamp + moment() + cbValidateURL'),
+      xhr.setRequestHeader('CB-ACCESS-TIMESTAMP', timeStamp),
+      xhr.setRequestHeader('client_id', clientId),
+      xhr.setRequestHeader('CB-VERSION', cbVersion),
+      xhr.setRequestHeader('Authorization', aBearer))
+    };
+<<<<<<< HEAD
   
+=======
+// end header information in coinbase ajax request     
+
+
+>>>>>>> master
     // CoinBase AJAX request
     $.ajax({
-        url: queryURL,
+        url: queryURL, 
         beforeSend: addApiKeyHeader,
         method: "GET"
     }).done(function(response) {
@@ -61,6 +115,7 @@ var addApiKeyHeader = function( xhr ) {
   });
 });
 // End CoinBase API Call
+<<<<<<< HEAD
 // Initialize Firebase
  var config = {
     apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
@@ -74,6 +129,30 @@ var addApiKeyHeader = function( xhr ) {
 var database = firebase.database();
 $('#buttonsend').on("click", function(event){
   event.preventDefault(event)
+=======
+
+
+// function to create a pop up wwhen the get coin button is pushed
+$(function() {
+    //----- OPEN
+    $('[data-popup-open]').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-open');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+        e.preventDefault();
+    });
+
+    //----- CLOSE
+    $('[data-popup-close]').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-close');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+        e.preventDefault();
+    });
+});
+
+$('#buttonsend').on("click", function(event){
+  event.preventDefault();
+
+>>>>>>> master
     var yourName = $('#form3').val().trim();
     var yourEmail = $('#form2').val().trim();
     var subject = $('#form32').val().trim();
