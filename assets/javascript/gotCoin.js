@@ -62,6 +62,7 @@ var addApiKeyHeader = function( xhr ) {
         $("#lc").html("LiteCoin:  " + response.data["3"].amount);
 });
 };
+cryptoTicker();
 setInterval(cryptoTicker, 10000);
 
 
