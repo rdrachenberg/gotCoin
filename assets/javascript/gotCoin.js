@@ -34,8 +34,8 @@ $.ajax({
        console.log(data["Time Series (Daily)"][todayDate]);
        console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
 
-     })
-     database.ref().push()
+     });
+
 
 });
 
@@ -168,7 +168,7 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
-$('#buttonsend').on("click", function(event){})
+
  
 $('#buttonsend').on("click", function(event){
 
@@ -187,10 +187,7 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
-<<<<<<< HEAD
-=======
 
->>>>>>> master
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
@@ -550,7 +547,7 @@ $('#stockSubmit').on("click", function(event){
         ],
 
         backgroundColor:[
-          "#FC2E1A",
+          '#4FDA55',
             ]
       }],
     }
@@ -603,18 +600,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FF7F73',
             ]
         }]
       }
@@ -658,18 +644,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FADDA',
             ]
         }]
       }
@@ -713,18 +688,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FF7F73',
             ]
         }]
       }
@@ -768,18 +732,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FDA55',
             ]
         }]
       }
@@ -823,18 +776,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FDA55',
             ]
         }]
       }
@@ -878,18 +820,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FFB84A',
             ]
         }]
       }
@@ -916,6 +847,7 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     var searchedStocks = $('<div>');
   });
 });
+
 
   //bitcoin widget
 
