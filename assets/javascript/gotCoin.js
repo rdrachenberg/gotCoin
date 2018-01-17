@@ -1,3 +1,4 @@
+
 function cryptoTicker(){
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -22,18 +23,37 @@ var addApiKeyHeader = function( xhr ) {
 setInterval(cryptoTicker, 1000);
 
 
+
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
 var apiKey = "MWAieJmDyYfwCYYC";
 var apiSecret = "eLXlitm4sbrClbuQ0orFmkmBGq7FKv29";
+
+var timeStamp = moment();
+
+var clientId = "ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe"
+
+var gotCoin = $('#gotCoin').on('click');
+
+var cbValidateURL = "https://www.coinbase.com/oauth/authorize?response_type=code&client_id= ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https://rdrachenberg.github.io/gotCoin/&state=SECURE_RANDOM&scope=wallet:accounts:read "
+
+var cbVersion = '2018-01-09'
+
+// header information to include before doing coinbase ajax request
 var addApiKeyHeader = function( xhr ) {
-      xhr.setRequestHeader('Api-Key', apiKey)
+      xhr.setRequestHeader('Api-Key', apiKey),
+      xhr.setRequestHeader('time', timeStamp),
+      xhr.setRequestHeader('client_id', clientId),
+      xhr.setRequestHeader('CB-VERSION', cbVersion)
+
     };
-  
+
     // CoinBase AJAX request
     $.ajax({
         url: queryURL,
         beforeSend: addApiKeyHeader,
+
+
         method: "GET"
     }).done(function(response) {
         $("#bitcoin").html("Bitcoin Exchange Price:  " + response.data["0"].amount);
@@ -95,6 +115,7 @@ var addApiKeyHeader = function( xhr ) {
   };
   firebase.initializeApp(config);
 var database = firebase.database();
+
 $('#buttonsend').on("click", function(event){
   event.preventDefault(event)
     var yourName = $('#form3').val().trim();
@@ -795,26 +816,34 @@ $('#stockSubmit').on("click", function(event){
 });
 
 //bitcoin widget
-// (function(b,i,t,C,O,I,N) {
-//     window.addEventListener('load',function() {
-//       if(b.getElementById(C))return;
-//       I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-//       I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-//     },false)
-//   })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
-  
 
+(function(b,i,t,C,O,I,N) {
+    window.addEventListener('load',function() {
+      if(b.getElementById(C))return;
+      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+    },false)
+  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
 
-//   $('#stockSubmit').on("click", function(){
-// var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
-// var userStockSearch = $("#userStockSearch").val().trim();
-// var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
-//     console.log(userStockSearch);
-//      $.ajax({ 
-//         url: alphavantagesearchURL,
-//         method: "GET"
-//     }).done(function(response){
-//       console.log(response);
-//     });
-//     var searchedStocks = $('<div>');
-//   });
+//Code linked to firebase
+$('#buttonsend').on("click", function(event){
+  event.preventDefault(event)
+
+    var yourName = $('#form3').val().trim();
+    var yourEmail = $('#form2').val().trim();
+    var subject = $('#form32').val().trim();
+    var yourMessage = $('#form8').val().trim();
+    
+    var loginData={
+      yourName: yourName,
+      yourEmail: yourEmail,
+      subject: subject,
+      yourMessage: yourMessage
+    }
+    database.ref().push(loginData)
+    console.log(loginData.yourName)
+    console.log(loginData.yourEmail)
+    console.log(loginData.subject)
+    console.log(loginData.yourMessage)
+  })
+
