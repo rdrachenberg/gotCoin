@@ -10,6 +10,35 @@
   };
   firebase.initializeApp(config);
 var database = firebase.database();
+var dataBase = firebase.database();
+$("#stockSubmit").on("click", function(event) {
+   event.preventDefault();
+
+   var queryURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&interval=1min&apikey=3ZIHGQKVNFF4IYF5&symbol=";
+    console.log(queryURL);
+
+   var searchTerm = $("#userStockSearch").val().trim();
+   var todayDate = moment().format("YYYY-MM-DD");
+   console.log(todayDate);
+$.ajax({
+       url: queryURL + searchTerm
+     }).done(function(data) {
+       $("#symbol").text(data["Meta Data"]["2. Symbol"]);
+       $("#open" ).text(data["Time Series (Daily)"][todayDate]["1. open"]);
+       $("#high" ).text(data["Time Series (Daily)"][todayDate]["2. high"]);
+       $("#low").text(data["Time Series (Daily)"][todayDate]["3. low"]);
+       $("#close").text(data["Time Series (Daily)"][todayDate]["4. close"]);
+       $("#volume").text(data["Time Series (Daily)"][todayDate]["5. volume"]);
+       console.log(data);
+
+       console.log(data["Meta Data"]["2. Symbol"]);
+       console.log(data["Time Series (Daily)"][todayDate]);
+       console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
+
+     })
+     database.ref().push()
+
+});
 
 
 
@@ -175,7 +204,6 @@ $('#buttonsend').on("click", function(event){
       yourMessage: yourMessage
     }
     database.ref().push(loginData)
-<<<<<<< HEAD
   }) // End of Tim firebase code
 
 // create an array that holds stocks to display in the six stock box cards automatically.
