@@ -15,7 +15,6 @@ a, .navbar-brand{
     border-radius: 1em;
     margin: 4.1%;
     padding: 1%;
-
 }
 .stockCards{
     background: #c0dfd9;
@@ -230,4 +229,3 @@ button{
     background:rgba(0,0,0,1);
     text-decoration:none;
 } /*end popup css--------------------*/
-s
