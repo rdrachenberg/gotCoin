@@ -1,13 +1,13 @@
-/*// // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyC_iqQW_F3errT4mRYM2IN0KDZAhx3U-hg",
-//     authDomain: "gotcoin-db44a.firebaseapp.com",
-//     databaseURL: "https://gotcoin-db44a.firebaseio.com",
-//     projectId: "gotcoin-db44a",
-//     storageBucket: "",
-//     messagingSenderId: "492118808139"
-//   };
-//   firebase.initializeApp(config);
+ // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
+    authDomain: "gotcoin-657c2.firebaseapp.com",
+    databaseURL: "https://gotcoin-657c2.firebaseio.com",
+    projectId: "gotcoin-657c2",
+    storageBucket: "gotcoin-657c2.appspot.com",
+    messagingSenderId: "399925748197"
+  };
+  firebase.initializeApp(config);
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -53,8 +53,38 @@ $('#buttonsend').on("click", function(event){
     console.log(loginData.yourEmail)
     console.log(loginData.subject)
     console.log(loginData.yourMessage)
-  }) // End of Tim firebase code
+  })
+ // End of Tim firebase code
 
+var dataBase = firebase.database();
+$("#stockSubmit").on("click", function(event) {
+    event.preventDefault();
+
+    var queryURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&interval=1min&apikey=3ZIHGQKVNFF4IYF5&symbol=";
+     console.log(queryURL);
+
+    var searchTerm = $("#userStockSearch").val().trim();
+    var todayDate = moment().format("YYYY-MM-DD");
+    console.log(todayDate);
+
+      $.ajax({
+        url: queryURL + searchTerm
+      }).done(function(data) {
+        $("#symbol").text(data["Meta Data"]["2. Symbol"]);
+        $("#open" ).text(data["Time Series (Daily)"][todayDate]["1. open"]);
+        $("#high" ).text(data["Time Series (Daily)"][todayDate]["2. high"]);
+        $("#low").text(data["Time Series (Daily)"][todayDate]["3. low"]);
+        $("#close").text(data["Time Series (Daily)"][todayDate]["4. close"]);
+        $("#volume").text(data["Time Series (Daily)"][todayDate]["5. volume"]);
+        console.log(data);
+
+        console.log(data["Meta Data"]["2. Symbol"]);
+        console.log(data["Time Series (Daily)"][todayDate]);
+        console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
+
+      })
+});
+  
 
 // JORDAN
 // create an array that holds stocks to display in the six stock box cards automatically.
@@ -140,7 +170,7 @@ let lineChart = new Chart(myChart, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -160,7 +190,7 @@ let lineChart2 = new Chart(myChart2, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -180,7 +210,7 @@ let lineChart3 = new Chart(myChart3, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -200,7 +230,7 @@ let lineChart4 = new Chart(myChart4, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -220,7 +250,7 @@ let lineChart5 = new Chart(myChart5, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -240,7 +270,7 @@ let lineChart6 = new Chart(myChart6, {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April'],
-    dataset: [{
+    datasets: [{
       label: 'Amount',
       data:[
         200,
@@ -302,4 +332,3 @@ $("#goButton").on('click', function(){
     });
 });
 
-*/

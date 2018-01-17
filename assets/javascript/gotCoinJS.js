@@ -1,6 +1,6 @@
 
 // CoinBase vars and API Call
-var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
+/*var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
 console.log(queryURL);
 
 var apiKey = "MWAieJmDyYfwCYYC";
@@ -147,7 +147,7 @@ $("#stockSubmit").on("click", function(event) {
         console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
 
       })
-      database.ref().push()
+      database.ref().push(userInputValue)
 
 });
   
@@ -179,7 +179,7 @@ $("#stockSubmit").on("click", function(event) {
 
 
 // create an array that holds stocks to display in the six stock box cards automatically.
-var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA", "ALGN", "NRG", "FSLR", "VRTX", "MU", "WYNN", "BA", "PYPL", "RHT"];
+/*var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA", "ALGN", "NRG", "FSLR", "VRTX", "MU", "WYNN", "BA", "PYPL", "RHT"];
 // API url to get stock info
 var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
 var userStockSearch = $("#userStockSearch").val().trim();
