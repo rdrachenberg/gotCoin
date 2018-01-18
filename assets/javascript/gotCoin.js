@@ -1,6 +1,6 @@
  $(document).ready( function(){
    // Initialize firbase
- var config = {
+var config = {
     apiKey: "AIzaSyBqsLzFBGMTYPx-XfUMFsYe6O3kEW4ku6I",
     authDomain: "gotcoin-657c2.firebaseapp.com",
     databaseURL: "https://gotcoin-657c2.firebaseio.com",
@@ -9,7 +9,9 @@
     messagingSenderId: "399925748197"
   };
   firebase.initializeApp(config);
+
 var dataBase = firebase.database();
+
 $("#stockSubmit").on("click", function(event) {
    event.preventDefault();
 
@@ -35,8 +37,6 @@ $.ajax({
        console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
 
      })
-     database.ref().push()
-
 });
 
 
@@ -168,13 +168,11 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
-$('#buttonsend').on("click", function(event){})
- 
 $('#buttonsend').on("click", function(event){
 
   event.preventDefault();
 
-
+    var dataBase = firebase.database();
     var yourName = $('#form3').val().trim();
     var yourEmail = $('#form2').val().trim();
     var subject = $('#form32').val().trim();
@@ -185,13 +183,29 @@ $('#buttonsend').on("click", function(event){
       yourEmail: yourEmail,
       subject: subject,
       yourMessage: yourMessage
+      firebase.database.ref().set(loginData);
     }
-    database.ref().push(loginData)
-<<<<<<< HEAD
-=======
+     database.ref().push(loginData);
 
->>>>>>> master
   }) // End of Tim firebase code
+
+//$("#buttonsend").click(function(){
+  //  $("#myLoginModal").hide();
+//});
+//$("#buttonsend").click(function(){
+  //$("#myLoginModal").attr("data-dismiss", "modal");
+});
+ /*//$("form").submit(function() {
+    // submit form
+    $.post($("form").attr('action'), $("form").serializeArray());
+    // alert
+    alert("The request has been submitted.");
+    // close window
+    window.close();
+    // return
+    return false;
+  });
+//});*/
 
 // create an array that holds stocks to display in the six stock box cards automatically.
 var presetStockArray = ["AAPL", "DST", "SSNC", "GOOGL", "AMZN", "TSLA", "ALGN", "NRG", "FSLR", "VRTX", "MU", "WYNN", "BA", "PYPL", "RHT"];
@@ -907,6 +921,7 @@ var alphavantageApiKey = "&apikey=3ZIHGQKVNFF4IYF5";
 var userStockSearch = $("#userStockSearch").val().trim();
 var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=" + userStockSearch + alphavantageApiKey;
     console.log(userStockSearch);
+     
      $.ajax({ 
         url: alphavantagesearchURL,
         method: "GET"
@@ -916,7 +931,6 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     var searchedStocks = $('<div>');
   });
 });
-
   //bitcoin widget
 
 (function(b,i,t,C,O,I,N) {
