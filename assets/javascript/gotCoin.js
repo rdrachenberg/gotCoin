@@ -169,6 +169,9 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
+$(".col-md-3").on("click", function(event) {
+  window.open("https://www.coinbase.com/oauth/authorize?client_id=ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https%3A%2F%2Frdrachenberg.github.io%2FgotCoin%2F&response_type=code&scope=wallet%3Auser%3Aread", "_blank");
+});
 
  
 $('#buttonsend').on("click", function(event){
