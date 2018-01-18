@@ -22,6 +22,25 @@ a, .navbar-brand{
     margin: 4.1%;
     
 }
+
+#symbol{
+    font-size: 40px;
+}
+#open{
+    font-size: 40px;
+}
+#high{
+    font-size: 40px;
+}
+#low{
+    font-size: 40px;
+}
+#close{
+    font-size: 40px;
+}
+#volume{
+    font-size: 40px;
+}
 h1{
     color: #3b3a36;
     font-weight: bold;
