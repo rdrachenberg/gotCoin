@@ -10,6 +10,7 @@
   };
   firebase.initializeApp(config);
 var dataBase = firebase.database();
+
 $("#stockSubmit").on("click", function(event) {
    event.preventDefault();
 
@@ -167,7 +168,6 @@ var addApiKeyHeaders = function( xhr ) {
   });
 });
 // End CoinBase API Call
-
 
  
 $('#buttonsend').on("click", function(event){

@@ -146,6 +146,19 @@ button{
 #inputStockSearch{
 	display: none;
 }
+.stockCurrent{
+    font-size: 20px;
+}
+
+.tableHead{
+    font-size: 22px;
+    font-weight: bold;
+    margin: 7px;
+}
+
+.tableContainer{
+    margin-top: 15px;
+}
 
 .ticker{
  background: #b3c2bf;
@@ -229,3 +242,8 @@ button{
     background:rgba(0,0,0,1);
     text-decoration:none;
 } /*end popup css--------------------*/
+
+
+#dailyStockPrice{
+    text-align: center;
+}
