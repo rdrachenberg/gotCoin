@@ -219,6 +219,14 @@ text on 3rd row*/
 	padding-top: 0px;
 }
 
+<<<<<<< HEAD
+ .col-lg-12 {
+ 	margin-left: 50px;
+ 	padding-left: 30px;
+ 	max-width: 800px;
+ 	display: flex;
+ }
+=======
 
 .popup-close:hover {
     -webkit-transform:translate(50%, -50%) rotate(180deg);
@@ -232,3 +240,4 @@ text on 3rd row*/
     text-align: center;
 }
 
+>>>>>>> 90b387b4e3ed3e0b5beab5c0e3957463888989e1
