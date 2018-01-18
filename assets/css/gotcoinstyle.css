@@ -174,13 +174,14 @@ button{
 .col-md-3 {
 	background-color: lightskyblue;
 	color: black;
-
 }
 
 #crypto {
 	font-size: 35px;
 }
 
+/*reducing space between bitcoin widgest and cryptocurrency 
+text on 3rd row*/
 .col-sm-5.cryptoCards.hoverable {
 	margin-top: 5px;
 	padding-top: 0px;
