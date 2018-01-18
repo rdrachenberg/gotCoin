@@ -186,3 +186,10 @@ text on 3rd row*/
 	margin-top: 5px;
 	padding-top: 0px;
 }
+
+ .col-lg-12 {
+ 	margin-left: 50px;
+ 	padding-left: 30px;
+ 	max-width: 800px;
+ 	display: flex;
+ }
