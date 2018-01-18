@@ -35,8 +35,8 @@ $.ajax({
        console.log(data["Meta Data"]["2. Symbol"]);
        console.log(data["Time Series (Daily)"][todayDate]);
        console.log(data["Time Series (Daily)"][todayDate]["3. low"]);
-
-     })
+      });
+     });
 });
 
 
@@ -62,9 +62,10 @@ var addApiKeyHeader = function( xhr ) {
         $("#lc").html("LiteCoin:  " + response.data["3"].amount);
 });
 };
+cryptoTicker();
 setInterval(cryptoTicker, 10000);
 
-
+// Global Vars *******************************************
 
 // CoinBase vars and API Call
 var queryURL = "https://api.coinbase.com/v2/prices/USD/spot"
@@ -89,6 +90,9 @@ var tokenRequest = "https://coinbase.com/api/v1/";
 
 var aBearer = 'abd90df5f27a7b170cd775abf89d632b350b7c1c9d53e08b340cd9832ce52c2c'
 
+// End Global Vars *******************************************
+
+
 // header information to include before doing coinbase ajax request
 
 var addApiKeyHeader = function( xhr ) {
@@ -107,11 +111,8 @@ var addApiKeyHeaders = function( xhr ) {
       xhr.setRequestHeader('client_id', clientId),
       xhr.setRequestHeader('CB-VERSION', cbVersion),
       xhr.setRequestHeader('Authorization', aBearer))
-    };
-
+    }; 
 // end header information in coinbase ajax request     
-
-
 
     // CoinBase AJAX request
     $.ajax({
@@ -168,11 +169,33 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
+// onClick funciton to send the user to link their 
+// coinbase account when clicking on any .col-md-3 element
+$(".col-md-3").on("click", function(event) {
+  
+  window.open("https://www.coinbase.com/oauth/authorize?client_id=ee639a175fec76aa3ad51dcf771da379842e9dbb4bee4c50af69dce584325abe&redirect_uri=https%3A%2F%2Frdrachenberg.github.io%2FgotCoin%2F&response_type=code&scope=wallet%3Auser%3Aread", "_blank");
+});
+// end class .col-md-3 onclick function
+
+
+// animate the Cryptocurrency text***************************
+$("#crypto").hover(function(){
+
+  $(this).stop().animate({ fontSize : '64px'}); 
+},
+
+function() {
+
+  $(this).stop().animate({ fontSize : '35px'})
+});
+// end animation of Cryptocurrency text**********************
+ 
+
 $('#buttonsend').on("click", function(event){
 
   event.preventDefault();
 
-    var dataBase = firebase.database();
+    var database = firebase.database();
     var yourName = $('#form3').val().trim();
     var yourEmail = $('#form2').val().trim();
     var subject = $('#form32').val().trim();
@@ -183,18 +206,17 @@ $('#buttonsend').on("click", function(event){
       yourEmail: yourEmail,
       subject: subject,
       yourMessage: yourMessage
-      firebase.database.ref().set(loginData);
+      //firebase.database.ref().set(loginData);
     }
      database.ref().push(loginData);
-
-  }) // End of Tim firebase code
+  }); // End of Tim firebase code
 
 //$("#buttonsend").click(function(){
   //  $("#myLoginModal").hide();
 //});
 //$("#buttonsend").click(function(){
   //$("#myLoginModal").attr("data-dismiss", "modal");
-});
+//});
  /*//$("form").submit(function() {
     // submit form
     $.post($("form").attr('action'), $("form").serializeArray());
@@ -564,7 +586,7 @@ $('#stockSubmit').on("click", function(event){
         ],
 
         backgroundColor:[
-          "#FC2E1A",
+          '#4FDA55',
             ]
       }],
     }
@@ -617,18 +639,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FF7F73',
             ]
         }]
       }
@@ -672,18 +683,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FADDA',
             ]
         }]
       }
@@ -727,18 +727,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FF7F73',
             ]
         }]
       }
@@ -782,18 +771,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FDA55',
             ]
         }]
       }
@@ -837,18 +815,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#4FDA55',
             ]
         }]
       }
@@ -892,18 +859,7 @@ $('#stockSubmit').on("click", function(event){
           ],
 
           backgroundColor:[
-            '#563f46',
-            '#9fa9a3',
-            '#484f4f',
-            '#454140',
-            '#b2c2bf',
-            '#c0ded9',
-            '#3b3a30',
-            '#e4d1d1',
-            '#b9b0b0',
-            '#7a3b2e',
-            '#77a8a8',
-            '#618685',
+            '#FFB84A',
             ]
         }]
       }
@@ -930,7 +886,9 @@ var alphavantagesearchURL = "https://www.alphavantage.co/query?function=TIME_SER
     });
     var searchedStocks = $('<div>');
   });
-});
+
+
+
   //bitcoin widget
 
 (function(b,i,t,C,O,I,N) {
