@@ -169,6 +169,7 @@ var addApiKeyHeaders = function( xhr ) {
 });
 // End CoinBase API Call
 
+
 // onClick funciton to send the user to link their 
 // coinbase account when clicking on any .col-md-3 element
 $(".col-md-3").on("click", function(event) {
@@ -189,6 +190,7 @@ function() {
   $(this).stop().animate({ fontSize : '35px'})
 });
 // end animation of Cryptocurrency text**********************
+
  
 
 $('#buttonsend').on("click", function(event){
