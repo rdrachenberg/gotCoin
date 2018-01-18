@@ -22,6 +22,25 @@ a, .navbar-brand{
     margin: 4.1%;
     
 }
+
+#symbol{
+    font-size: 40px;
+}
+#open{
+    font-size: 40px;
+}
+#high{
+    font-size: 40px;
+}
+#low{
+    font-size: 40px;
+}
+#close{
+    font-size: 40px;
+}
+#volume{
+    font-size: 40px;
+}
 h1{
     color: #3b3a36;
     font-weight: bold;
@@ -176,65 +195,30 @@ button{
 /*handles when a user clicks to open coinbase account with a popup*/
 .btn {
 	background-color: black;
+	/*font-size: 1.5em;*/
+    color: #3b3a36;
+    text-shadow: 1px 1px 1px #3b3a36;
 	font-size: 14px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-/* The Outer countainer class */
-.popup {
-    width:100%;
-    height:100%;
-    display:none;
-    position:fixed;
-    top:0px;
-    left:0px;
-    background:rgba(0,0,0,0.75);
-   
+/*background color of class col-md-3 ticker*/
+.col-md-3 {
+	background-color: lightskyblue;
+	color: black;
 }
 
-.popup-inner h2 {
-	font-size: 52px;
-    align-content: center;
-
+#crypto {
+	font-size: 35px;
 }
 
-/* Inner */
-.popup-inner {
-    max-width:700px;
-    width:90%;
-    padding:40px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    -webkit-transform:translate(-50%, -50%);
-    transform:translate(-50%, -50%);
-    box-shadow:0px 2px 6px rgba(0,0,0,1);
-    border-radius:3px;
-    background:#fff;
-    font-size: 52px;
-    align-content: center;
+/*reducing space between bitcoin widgest and cryptocurrency 
+text on 3rd row*/
+.col-sm-5.cryptoCards.hoverable {
+	margin-top: 5px;
+	padding-top: 0px;
 }
 
-/* Close Button */
-.popup-close {
-    width:30px;
-    height:30px;
-    padding-top:4px;
-    display:inline-block;
-    position:absolute;
-    top:0px;
-    right:0px;
-    transition:ease 0.25s all;
-    -webkit-transform:translate(50%, -50%);
-    transform:translate(50%, -50%);
-    border-radius:1000px;
-    background:rgba(0,0,0,0.8);
-    font-family:Arial, Sans-Serif;
-    font-size:20px;
-    text-align:center;
-    line-height:100%;
-    color:#fff;
-}
 
 .popup-close:hover {
     -webkit-transform:translate(50%, -50%) rotate(180deg);
@@ -247,3 +231,4 @@ button{
 #dailyStockPrice{
     text-align: center;
 }
+
