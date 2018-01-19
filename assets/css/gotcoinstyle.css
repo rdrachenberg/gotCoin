@@ -204,8 +204,8 @@ button{
 
 /*background color of class col-md-3 ticker*/
 .col-md-3 {
-	background-color: lightskyblue;
-	color: black;
+	background-color: black;
+	color: white;
 }
 
 #crypto {
@@ -221,10 +221,10 @@ text on 3rd row*/
 
 
  .col-lg-12 {
- 	margin-left: 50px;
- 	padding-left: 30px;
- 	max-width: 800px;
- 	display: flex;
+ 	margin-left: 20px;
+ 	padding-left: 20px;
+ 	max-width: 100%;
+ 	
  }
 
 
